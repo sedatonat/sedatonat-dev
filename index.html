@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Sedat Onat — Software Development & Data Analytics. Power BI projects, Swift development notes, and more.">
+<meta name="description" content="Sedat Onat — Development & Data Analytics. Power BI projects, Swift development notes, and more.">
 <meta name="author" content="Sedat Onat">
 <meta property="og:title" content="Sedat Onat | Development & Data Analytics">
 <meta property="og:description" content="A reference space for my software development and data analytics journey.">
@@ -11,448 +11,517 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sedat Onat | Development & Data Analytics">
+<meta name="theme-color" content="#0a0a0c">
 <title>Sedat Onat — Development &amp; Data Analytics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;700&family=Wallpoet&family=Major+Mono+Display&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0a;
-    --fg: #ffffff;
-    --muted: #888888;
-    --line: rgba(255,255,255,0.08);
-    --line-strong: rgba(255,255,255,0.18);
+    --bg-deep: #0a0a0c;
+    --bg-mid: #141416;
+    --bg-up: #1c1c1e;
+    --bg-card: #1a1a1d;
+    --gold: #c4a572;
+    --gold-dim: #8a7551;
+    --gold-faint: rgba(196, 165, 114, 0.15);
+    --fg: #f5f5f5;
+    --fg-mid: #a8a8a8;
+    --fg-low: #666666;
+    --line: rgba(255, 255, 255, 0.06);
+    --line-warm: rgba(196, 165, 114, 0.2);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg);
+    background: var(--bg-deep);
     color: var(--fg);
     line-height: 1.6;
-    min-height: 100vh;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    cursor: default;
   }
+  ::selection { background: var(--gold); color: var(--bg-deep); }
+  a { color: inherit; text-decoration: none; }
 
-  /* Subtle grid backdrop */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size: 80px 80px;
-    pointer-events: none;
-    opacity: 0.6;
-    z-index: 0;
-    mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
-    -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+  /* === FIXED OVERLAY === */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 24px 40px; pointer-events: none;
+    transition: backdrop-filter .3s, background .3s;
   }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 32px;
-    position: relative;
-    z-index: 1;
-  }
-  @media (max-width: 600px) {
-    .container { padding: 0 20px; }
-  }
-
-  /* NAV */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 28px 0;
+  .nav.scrolled {
+    backdrop-filter: blur(8px);
+    background: rgba(10,10,12,0.6);
     border-bottom: 1px solid var(--line);
   }
+  .nav > * { pointer-events: auto; }
   .logo {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
+    font-family: 'Wallpoet', sans-serif;
+    font-size: 16px; color: var(--gold);
+    letter-spacing: 0.2em;
   }
-  .logo .dim { color: var(--muted); }
   .lang-toggle {
     display: flex;
-    gap: 0;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Major Mono Display', monospace;
     font-size: 11px;
-    border: 1px solid var(--line-strong);
-  }
-  .lang-toggle button {
-    background: transparent;
-    color: var(--muted);
-    border: none;
-    padding: 7px 12px;
-    cursor: pointer;
-    transition: all .2s;
-    font-family: inherit;
-    letter-spacing: 0.05em;
-  }
-  .lang-toggle button + button {
-    border-left: 1px solid var(--line-strong);
-  }
-  .lang-toggle button.active {
-    background: var(--fg);
-    color: var(--bg);
-  }
-  .lang-toggle button:hover:not(.active) {
-    color: var(--fg);
-  }
-
-  /* HERO */
-  .hero {
-    padding: 120px 0 80px;
-    border-bottom: 1px solid var(--line);
-    position: relative;
-  }
-  @media (max-width: 600px) { .hero { padding: 70px 0 50px; } }
-
-  .meta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    margin-bottom: 32px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-  .meta::before { content: "// "; }
-
-  h1 {
-    font-size: clamp(56px, 11vw, 140px);
-    font-weight: 200;
-    letter-spacing: -0.045em;
-    line-height: 0.95;
-    margin-bottom: 36px;
-  }
-  h1 .last { font-weight: 700; }
-
-  .tagline {
-    font-size: clamp(17px, 1.6vw, 21px);
-    max-width: 640px;
-    color: var(--muted);
-    line-height: 1.55;
-    font-weight: 300;
-  }
-  .tagline strong { color: var(--fg); font-weight: 500; }
-
-  /* PROJECTS */
-  .projects {
-    padding: 90px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .section-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 48px;
-  }
-  .section-title::before { content: "// "; }
-
-  .project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    border-top: 1px solid var(--line-strong);
-    border-left: 1px solid var(--line-strong);
-  }
-  .project-card {
-    border-right: 1px solid var(--line-strong);
-    border-bottom: 1px solid var(--line-strong);
-    padding: 44px 36px;
-    text-decoration: none;
-    color: var(--fg);
-    transition: background .25s ease, color .25s ease;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-height: 280px;
+    border: 1px solid var(--line-warm);
+    border-radius: 2px;
     overflow: hidden;
   }
-  .project-card:hover {
-    background: var(--fg);
-    color: var(--bg);
-  }
-  .project-card .num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    margin-bottom: 28px;
+  .lang-toggle button {
+    background: transparent; color: var(--fg-mid);
+    border: none; padding: 6px 11px; cursor: pointer;
+    transition: all .2s; font-family: inherit;
     letter-spacing: 0.1em;
   }
-  .project-card:hover .num { color: var(--bg); opacity: 0.6; }
-  .project-card h3 {
-    font-size: 26px;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    margin-bottom: 14px;
-    line-height: 1.15;
-  }
-  .project-card p {
-    font-size: 14px;
-    color: var(--muted);
-    flex-grow: 1;
-    line-height: 1.55;
-  }
-  .project-card:hover p { color: var(--bg); opacity: 0.7; }
-  .project-card .arrow {
-    margin-top: 32px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .project-card .arrow .arr { transition: transform .25s ease; }
-  .project-card:hover .arrow .arr { transform: translateX(8px); }
+  .lang-toggle button + button { border-left: 1px solid var(--line-warm); }
+  .lang-toggle button.active { background: var(--gold); color: var(--bg-deep); }
+  .lang-toggle button:hover:not(.active) { color: var(--gold); }
 
-  /* BRIDGE / ABOUT */
-  .bridge {
-    padding: 90px 0;
-    border-bottom: 1px solid var(--line);
+  .side-rail {
+    position: fixed; right: 30px; top: 50%;
+    transform: translateY(-50%); z-index: 50;
+    display: flex; flex-direction: column; align-items: center; gap: 14px;
+    pointer-events: none;
   }
-  .bridge-content {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 80px;
-    align-items: start;
+  .side-rail .line { width: 1px; height: 40px; background: var(--line-warm); }
+  .side-rail .label {
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    font-family: 'Major Mono Display', monospace;
+    font-size: 10px; color: var(--gold-dim);
+    letter-spacing: 0.4em; text-transform: uppercase;
   }
-  @media (max-width: 768px) {
-    .bridge-content { grid-template-columns: 1fr; gap: 50px; }
+
+  .progress-rail {
+    position: fixed; left: 40px; top: 50%;
+    transform: translateY(-50%); z-index: 50;
+    display: flex; flex-direction: column; gap: 16px;
   }
-  .bridge h2 {
-    font-size: clamp(34px, 4.5vw, 54px);
-    font-weight: 200;
-    letter-spacing: -0.035em;
-    line-height: 1.05;
+  .progress-rail .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--line-warm); cursor: pointer;
+    transition: all .3s; border: 0; padding: 0;
+  }
+  .progress-rail .dot.active {
+    background: var(--gold); transform: scale(1.5);
+    box-shadow: 0 0 0 4px rgba(196,165,114,0.1);
+  }
+  .progress-rail .dot:hover:not(.active) { background: var(--gold-dim); }
+
+  /* === SECTIONS === */
+  .section {
+    min-height: 100vh; position: relative;
+    padding: 100px 80px 100px;
+    display: flex; flex-direction: column; justify-content: center;
+    overflow: hidden;
+  }
+  .section-tag {
+    font-family: 'Major Mono Display', monospace;
+    font-size: 11px; color: var(--gold-dim);
+    letter-spacing: 0.25em; text-transform: uppercase;
     margin-bottom: 28px;
   }
-  .bridge h2 strong { font-weight: 700; }
-  .bridge p {
-    color: var(--muted);
-    margin-bottom: 36px;
-    font-size: 16px;
-    max-width: 480px;
+  .section-tag::before { content: "// "; opacity: 0.5; }
+  .section-marker {
+    position: absolute; bottom: 36px; left: 80px;
+    font-family: 'Major Mono Display', monospace;
+    font-size: 11px; color: var(--fg-low); letter-spacing: 0.15em;
   }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    background: var(--fg);
-    color: var(--bg);
-    padding: 16px 26px;
-    text-decoration: none;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    transition: transform .2s ease;
-  }
-  .btn:hover { transform: translateY(-2px); }
-  .btn .arr { transition: transform .25s ease; }
-  .btn:hover .arr { transform: translateX(4px); }
 
-  .stack {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 2.1;
-    border-left: 1px solid var(--line-strong);
-    padding-left: 28px;
+  .ghost-text {
+    position: absolute; bottom: -3vw; left: 0; right: 0;
+    font-family: 'Wallpoet', sans-serif;
+    font-size: clamp(80px, 22vw, 280px);
+    color: var(--fg); opacity: 0.022;
+    letter-spacing: 0.05em; white-space: nowrap;
+    pointer-events: none; text-align: center; line-height: 1;
+    user-select: none;
   }
-  .stack .key { color: var(--fg); }
-  .stack .val { color: var(--muted); }
 
-  /* FOOTER */
-  footer {
-    padding: 70px 0 40px;
+  /* === HERO === */
+  #hero {
+    background: radial-gradient(ellipse at center, var(--bg-up) 0%, var(--bg-mid) 50%, var(--bg-deep) 100%);
+    text-align: center; align-items: center;
   }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin-bottom: 50px;
+  #hero::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 90px 90px;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
   }
-  @media (max-width: 700px) {
-    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero-eyebrow {
+    font-family: 'Major Mono Display', monospace;
+    font-size: 12px; color: var(--gold-dim);
+    letter-spacing: 0.45em; text-transform: uppercase;
+    margin-bottom: 32px; position: relative;
   }
-  .footer-col h4 {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.15em;
+  .hero-eyebrow::before { content: "// "; opacity: 0.5; }
+  .hero-name {
+    font-family: 'Wallpoet', sans-serif;
+    font-size: clamp(54px, 11vw, 140px);
+    color: var(--gold); letter-spacing: 0.06em;
+    line-height: 0.95; margin-bottom: 36px; position: relative;
+  }
+  .hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(11px, 1.2vw, 14px);
+    color: var(--fg-mid); letter-spacing: 0.45em;
+    text-transform: uppercase; font-weight: 300;
+    position: relative;
+  }
+  .hero-decoration {
+    display: flex; align-items: center; justify-content: center;
+    gap: 16px; margin-top: 56px;
+    font-family: 'Major Mono Display', monospace;
+    font-size: 10px; color: var(--gold-dim);
+    letter-spacing: 0.35em; text-transform: uppercase;
+  }
+  .hero-decoration .bar { width: 40px; height: 1px; background: var(--gold-dim); opacity: 0.5; }
+
+  /* === WORK GRIDS === */
+  .work-grid {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 60px; align-items: center; max-width: 1200px;
+    width: 100%; margin: 0 auto;
+  }
+  .work-grid.reverse { grid-template-columns: 1.4fr 1fr; }
+  .work-title {
+    font-family: 'Wallpoet', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    color: var(--gold); letter-spacing: 0.04em;
+    line-height: 1.05; margin-bottom: 22px;
+  }
+  .work-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px; color: var(--fg-mid);
+    line-height: 1.7; font-weight: 300;
+    margin-bottom: 32px; max-width: 440px;
+  }
+  .cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'Major Mono Display', monospace;
+    font-size: 11px; color: var(--fg);
+    letter-spacing: 0.25em; padding: 6px 0;
+    border-bottom: 1px solid var(--fg);
+    transition: all .3s ease;
+  }
+  .cta:hover {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+    gap: 16px;
+  }
+  .cta .arr { transition: transform .3s; }
+
+  .visual-card {
+    background: linear-gradient(135deg, var(--bg-card) 0%, #25252a 100%);
+    border: 1px solid var(--line);
+    border-radius: 4px; padding: 32px;
+    min-height: 340px; position: relative; overflow: hidden;
+    transition: border-color .4s, transform .4s;
+  }
+  .visual-card:hover {
+    border-color: var(--line-warm);
+    transform: translateY(-4px);
+  }
+  .visual-card::before {
+    content: ""; position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+    opacity: 0; transition: opacity .4s;
+  }
+  .visual-card:hover::before { opacity: 1; }
+  .card-label {
+    font-family: 'Major Mono Display', monospace;
+    font-size: 10px; color: var(--gold-dim);
+    letter-spacing: 0.3em; margin-bottom: 28px;
+  }
+
+  /* Bars */
+  .bars {
+    display: flex; gap: 8px; align-items: flex-end;
+    height: 200px; margin-top: 40px;
+  }
+  .bars > div {
+    flex: 1;
+    background: linear-gradient(180deg, rgba(196,165,114,0.7), rgba(196,165,114,0.15));
+    border-top: 1px solid var(--gold);
+    transform-origin: bottom;
+  }
+  .visible .bars > div { animation: bar-rise 1.2s cubic-bezier(.2,.7,.3,1) backwards; }
+  @keyframes bar-rise {
+    from { transform: scaleY(0); }
+    to { transform: scaleY(1); }
+  }
+
+  /* Code */
+  .code {
+    font-family: 'Major Mono Display', monospace;
+    font-size: 12px; color: var(--fg-mid);
+    line-height: 2; white-space: pre;
+  }
+  .code .kw { color: var(--gold); }
+  .code .cm { color: var(--fg-low); font-style: italic; }
+  .code .str { color: #b8d4a8; }
+  .code .typ { color: #d4b888; }
+
+  /* Contact */
+  #contact { background: linear-gradient(180deg, var(--bg-mid) 0%, var(--bg-deep) 100%); }
+  .contact-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    gap: 80px; align-items: end;
+    max-width: 1200px; width: 100%; margin: 0 auto;
+  }
+  .quote-title {
+    font-family: 'Wallpoet', sans-serif;
+    font-size: clamp(32px, 4.5vw, 56px);
+    color: var(--gold); letter-spacing: 0.04em;
+    line-height: 1.1; margin-bottom: 28px;
+  }
+  .contact-list {
+    list-style: none;
+    font-family: 'Major Mono Display', monospace;
+    font-size: 12px; letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 18px;
   }
-  .footer-col a {
-    display: block;
+  .contact-list li {
+    padding: 12px 0; border-bottom: 1px solid var(--line);
+  }
+  .contact-list li:first-child { border-top: 1px solid var(--line); }
+  .contact-list a {
     color: var(--fg);
-    text-decoration: none;
-    font-size: 14px;
-    padding: 5px 0;
-    transition: color .2s ease, padding-left .2s ease;
+    display: flex; justify-content: space-between; align-items: center;
+    transition: color .25s, padding-left .25s;
   }
-  .footer-col a:hover {
-    color: var(--muted);
-    padding-left: 6px;
+  .contact-list a:hover { color: var(--gold); padding-left: 6px; }
+  .contact-list a .arr {
+    color: var(--gold-dim); font-size: 10px;
+    transition: transform .25s, color .25s;
   }
-  .footer-bottom {
-    padding-top: 30px;
+  .contact-list a:hover .arr { transform: translateX(4px); color: var(--gold); }
+  .contact-list .featured > a > span:first-child { color: var(--gold); }
+
+  .footer-meta {
+    margin-top: 56px; padding-top: 24px;
     border-top: 1px solid var(--line);
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
+    display: flex; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+    font-family: 'Major Mono Display', monospace;
+    font-size: 10px; color: var(--fg-low); letter-spacing: 0.2em;
+    max-width: 1200px; width: 100%; margin-left: auto; margin-right: auto;
   }
 
-  /* Animations */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity .9s ease, transform .9s ease;
+  /* === ANIMATIONS === */
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(.2,.7,.3,1), transform 1s cubic-bezier(.2,.7,.3,1);
   }
-  .fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal.delay-1 { transition-delay: .1s; }
+  .reveal.delay-2 { transition-delay: .2s; }
+  .reveal.delay-3 { transition-delay: .3s; }
 
-  /* Selection */
-  ::selection { background: var(--fg); color: var(--bg); }
+  /* === RESPONSIVE === */
+  @media (max-width: 900px) {
+    .section { padding: 90px 24px 80px; }
+    .nav { padding: 18px 22px; }
+    .progress-rail { left: 14px; gap: 12px; }
+    .side-rail { right: 14px; }
+    .work-grid, .work-grid.reverse, .contact-grid {
+      grid-template-columns: 1fr !important;
+      gap: 40px;
+    }
+    .work-grid.reverse > .visual-card { order: 2; }
+    .ghost-text { display: none; }
+    .section-marker { left: 22px; bottom: 22px; }
+    .hero-decoration .bar { width: 24px; }
+  }
+  @media (max-width: 480px) {
+    .progress-rail, .side-rail { display: none; }
+    .visual-card { padding: 22px; min-height: 260px; }
+    .bars { height: 140px; }
+    .code { font-size: 11px; }
+  }
 </style>
 </head>
 <body>
-  <div class="container">
 
-    <nav>
-      <div class="logo">SEDAT<span class="dim">.</span>ONAT<span class="dim">/</span>DEV</div>
-      <div class="lang-toggle" role="group" aria-label="Language">
-        <button class="active" data-lang="en" aria-label="English">EN</button>
-        <button data-lang="tr" aria-label="Türkçe">TR</button>
-      </div>
-    </nav>
-
-    <section class="hero fade-up">
-      <div class="meta" data-en="DEVELOPMENT · DATA ANALYTICS · 2026" data-tr="GELİŞTİRME · VERİ ANALİTİĞİ · 2026">DEVELOPMENT · DATA ANALYTICS · 2026</div>
-      <h1>Sedat <span class="last">Onat</span></h1>
-      <p class="tagline" data-en="A reference space for my <strong>software development</strong> and <strong>data analytics</strong> journey. Power BI dashboards, Swift notes, and the occasional experiment." data-tr="<strong>Yazılım geliştirme</strong> ve <strong>veri analitiği</strong> yolculuğum için bir referans alan. Power BI panoları, Swift notları ve ara sıra denemeler.">A reference space for my <strong>software development</strong> and <strong>data analytics</strong> journey. Power BI dashboards, Swift notes, and the occasional experiment.</p>
-    </section>
-
-    <section class="projects fade-up">
-      <div class="section-title" data-en="WORK" data-tr="ÇALIŞMALAR">WORK</div>
-      <div class="project-grid">
-        <a href="https://www.tedarikzinciriportali.com/makale/tags/power-bi-tr" class="project-card" target="_blank" rel="noopener">
-          <div class="num">01 — POWER BI</div>
-          <h3 data-en="Power BI Projects" data-tr="Power BI Projeleri">Power BI Projects</h3>
-          <p data-en="Dashboards and analytics across supply chain, purchasing, and inventory domains." data-tr="Tedarik zinciri, satınalma ve envanter alanlarında pano ve analitik çalışmaları.">Dashboards and analytics across supply chain, purchasing, and inventory domains.</p>
-          <div class="arrow"><span data-en="View collection" data-tr="Koleksiyonu gör">View collection</span> <span class="arr">→</span></div>
-        </a>
-        <a href="https://swift.sedatonat.dev" class="project-card" target="_blank" rel="noopener">
-          <div class="num">02 — SWIFT / iOS</div>
-          <h3 data-en="Swift Development Notes" data-tr="Swift Geliştirme Notları">Swift Development Notes</h3>
-          <p data-en="iOS development notes, snippets, and learnings collected along the way." data-tr="iOS geliştirme notları, kod örnekleri ve yol boyu öğrenilenler.">iOS development notes, snippets, and learnings collected along the way.</p>
-          <div class="arrow"><span data-en="Open notes" data-tr="Notları aç">Open notes</span> <span class="arr">→</span></div>
-        </a>
-        <a href="https://github.com/sedatonat" class="project-card" target="_blank" rel="noopener">
-          <div class="num">03 — SOURCE</div>
-          <h3>GitHub</h3>
-          <p data-en="Source code, experiments, and open work." data-tr="Kaynak kod, denemeler ve açık çalışmalar.">Source code, experiments, and open work.</p>
-          <div class="arrow"><span data-en="Visit profile" data-tr="Profili ziyaret et">Visit profile</span> <span class="arr">→</span></div>
-        </a>
-      </div>
-    </section>
-
-    <section class="bridge fade-up">
-      <div class="bridge-content">
-        <div>
-          <div class="section-title" data-en="ABOUT" data-tr="HAKKINDA">ABOUT</div>
-          <h2 data-en="More than just <strong>code.</strong>" data-tr="Sadece <strong>kod</strong> değil." >More than just <strong>code.</strong></h2>
-          <p data-en="My main practice is in supply chain, purchasing, and writing. The work here is a parallel — a place to document what I learn while building." data-tr="Asıl çalışma alanım tedarik zinciri, satınalma ve yazarlık. Burası ise paralel bir alan — geliştirirken öğrendiklerimi belgelediğim bir yer.">My main practice is in supply chain, purchasing, and writing. The work here is a parallel — a place to document what I learn while building.</p>
-          <a href="https://www.sedatonat.com" class="btn" target="_blank" rel="noopener">
-            <span data-en="Visit SedatOnat.com" data-tr="SedatOnat.com'u ziyaret et">Visit SedatOnat.com</span>
-            <span class="arr">→</span>
-          </a>
-        </div>
-        <div class="stack" aria-label="profile">
-          <div><span class="key">role</span>        <span class="val">= "Purchasing &amp; Supply Chain"</span></div>
-          <div><span class="key">tools</span>       <span class="val">= ["Power BI", "Swift", "Python"]</span></div>
-          <div><span class="key">writes_at</span>   <span class="val">= "TedarikZinciriPortali.com"</span></div>
-          <div><span class="key">news_at</span>     <span class="val">= "TZP.news"</span></div>
-          <div><span class="key">photography</span> <span class="val">= "SedatOnat.photography"</span></div>
-          <div><span class="key">based_in</span>    <span class="val">= "Türkiye"</span></div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4 data-en="REFERENCE" data-tr="REFERANS">REFERENCE</h4>
-          <a href="https://www.sedatonat.com" target="_blank" rel="noopener">SedatOnat.com</a>
-          <a href="https://www.tedarikzinciriportali.com" target="_blank" rel="noopener">TedarikZinciriPortali.com</a>
-          <a href="https://tzp.news" target="_blank" rel="noopener">TZP.news</a>
-        </div>
-        <div class="footer-col">
-          <h4 data-en="CONNECT" data-tr="BAĞLANTI">CONNECT</h4>
-          <a href="https://github.com/sedatonat" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://twitter.com/sedatonat" target="_blank" rel="noopener">X / Twitter</a>
-          <a href="https://www.linkedin.com/in/sedatonat/" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-        <div class="footer-col">
-          <h4 data-en="CONTACT" data-tr="İLETİŞİM">CONTACT</h4>
-          <a href="mailto:info@sedatonat.com?subject=%5BSedatOnat.dev%5D%20Hello">info@sedatonat.com</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div>© <span id="year">2026</span> Sedat Onat</div>
-        <div data-en="Static · No tracking · Hosted on GitHub Pages" data-tr="Statik · İzleme yok · GitHub Pages üzerinde">Static · No tracking · Hosted on GitHub Pages</div>
-      </div>
-    </footer>
-
+<nav class="nav" id="nav">
+  <a href="#hero" class="logo">S/O</a>
+  <div class="lang-toggle" role="group" aria-label="Language">
+    <button class="active" data-lang="en" aria-label="English">EN</button>
+    <button data-lang="tr" aria-label="Türkçe">TR</button>
   </div>
+</nav>
 
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+<div class="progress-rail" aria-hidden="true">
+  <button class="dot active" data-target="hero" aria-label="Section 1"></button>
+  <button class="dot" data-target="work" aria-label="Section 2"></button>
+  <button class="dot" data-target="swift" aria-label="Section 3"></button>
+  <button class="dot" data-target="contact" aria-label="Section 4"></button>
+</div>
 
-    // Language toggle
-    const buttons = document.querySelectorAll('.lang-toggle button');
-    function setLang(lang) {
-      document.documentElement.lang = lang;
-      document.querySelectorAll('[data-en]').forEach(el => {
-        const text = el.getAttribute('data-' + lang);
-        if (text) el.innerHTML = text;
-      });
-      buttons.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-      try { localStorage.setItem('sodev_lang', lang); } catch(e) {}
+<div class="side-rail" aria-hidden="true">
+  <div class="line"></div>
+  <div class="label" data-en="Scroll ↓" data-tr="Kaydır ↓">Scroll ↓</div>
+  <div class="line"></div>
+</div>
+
+<section class="section" id="hero">
+  <div class="ghost-text">DEV</div>
+  <div class="reveal" style="text-align:center;">
+    <div class="hero-eyebrow" data-en="I AM" data-tr="BEN">I AM</div>
+    <h1 class="hero-name">SEDAT ONAT</h1>
+    <p class="hero-subtitle" data-en="Development × Data Analytics" data-tr="Geliştirme × Veri Analitiği">Development × Data Analytics</p>
+    <div class="hero-decoration" data-en="EST · 2026 · TR" data-tr="2026 · TR · EST">
+      <span class="bar"></span>EST · 2026 · TR<span class="bar"></span>
+    </div>
+  </div>
+  <div class="section-marker">.01 / 04</div>
+</section>
+
+<section class="section" id="work">
+  <div class="ghost-text">WORK</div>
+  <div class="section-tag reveal" data-en="02 — Work" data-tr="02 — Çalışmalar">02 — Work</div>
+  <div class="work-grid">
+    <div class="reveal delay-1">
+      <h2 class="work-title" data-en="POWER BI<br>PROJECTS" data-tr="POWER BI<br>PROJELERİ">POWER BI<br>PROJECTS</h2>
+      <p class="work-desc" data-en="Dashboards and analytics across supply chain, purchasing, and inventory domains. From DAX-heavy models to custom visuals — built for decisions, not decoration." data-tr="Tedarik zinciri, satınalma ve envanter alanlarında pano ve analitik çalışmaları. DAX ağırlıklı modellerden özel görsellere — karar için, süs için değil.">Dashboards and analytics across supply chain, purchasing, and inventory domains. From DAX-heavy models to custom visuals — built for decisions, not decoration.</p>
+      <a href="https://www.tedarikzinciriportali.com/makale/tags/power-bi-tr" class="cta" target="_blank" rel="noopener">
+        <span data-en="View collection" data-tr="Koleksiyonu gör">View collection</span> <span class="arr">→</span>
+      </a>
+    </div>
+    <div class="visual-card reveal delay-2">
+      <div class="card-label">DASHBOARD.001 ▸ SUPPLY CHAIN</div>
+      <div class="bars">
+        <div style="height:42%;animation-delay:.1s"></div>
+        <div style="height:68%;animation-delay:.18s"></div>
+        <div style="height:35%;animation-delay:.26s"></div>
+        <div style="height:88%;animation-delay:.34s"></div>
+        <div style="height:55%;animation-delay:.42s"></div>
+        <div style="height:78%;animation-delay:.5s"></div>
+        <div style="height:48%;animation-delay:.58s"></div>
+        <div style="height:62%;animation-delay:.66s"></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-marker">.02 / 04</div>
+</section>
+
+<section class="section" id="swift">
+  <div class="ghost-text">iOS</div>
+  <div class="section-tag reveal" data-en="03 — iOS / Swift" data-tr="03 — iOS / Swift">03 — iOS / Swift</div>
+  <div class="work-grid reverse">
+    <div class="visual-card reveal delay-1">
+      <div class="card-label">CONTENT.swift ▸ SWIFTUI</div>
+<pre class="code"><span class="cm">// SwiftUI · iOS</span>
+<span class="kw">import</span> SwiftUI
+
+<span class="kw">struct</span> <span class="typ">ContentView</span>: <span class="typ">View</span> {
+  <span class="kw">var</span> body: some <span class="typ">View</span> {
+    VStack {
+      Text(<span class="str">"Hello, world."</span>)
+        .font(.system(.title))
     }
-    buttons.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+  }
+}</pre>
+    </div>
+    <div class="reveal delay-2">
+      <h2 class="work-title" data-en="SWIFT<br>NOTES" data-tr="SWIFT<br>NOTLARI">SWIFT<br>NOTES</h2>
+      <p class="work-desc" data-en="iOS development notes, snippets, and learnings collected along the way. Focused on SwiftUI, Combine, and clean architecture." data-tr="iOS geliştirme notları, kod örnekleri ve yol boyu öğrenilenler. SwiftUI, Combine ve temiz mimari odaklı.">iOS development notes, snippets, and learnings collected along the way. Focused on SwiftUI, Combine, and clean architecture.</p>
+      <a href="https://swift.sedatonat.dev" class="cta" target="_blank" rel="noopener">
+        <span data-en="Open notes" data-tr="Notları aç">Open notes</span> <span class="arr">→</span>
+      </a>
+    </div>
+  </div>
+  <div class="section-marker">.03 / 04</div>
+</section>
 
-    // Init from saved or browser
-    try {
-      const saved = localStorage.getItem('sodev_lang');
-      if (saved === 'tr' || saved === 'en') {
-        setLang(saved);
-      } else if ((navigator.language || '').toLowerCase().startsWith('tr')) {
-        setLang('tr');
+<section class="section" id="contact">
+  <div class="ghost-text">END</div>
+  <div class="section-tag reveal" data-en="04 — More than code" data-tr="04 — Sadece kod değil">04 — More than code</div>
+  <div class="contact-grid">
+    <div class="reveal delay-1">
+      <h2 class="quote-title" data-en="MORE THAN<br>JUST CODE." data-tr="SADECE<br>KOD DEĞİL.">MORE THAN<br>JUST CODE.</h2>
+      <p class="work-desc" data-en="My main practice is purchasing and supply chain — and writing about it. The work here is the parallel: a place to document what I learn while building." data-tr="Asıl çalışma alanım tedarik zinciri, satınalma ve yazarlık. Burası paralel — geliştirirken öğrendiklerimi belgelediğim yer.">My main practice is purchasing and supply chain — and writing about it. The work here is the parallel: a place to document what I learn while building.</p>
+    </div>
+    <ul class="contact-list reveal delay-2">
+      <li class="featured"><a href="https://www.sedatonat.com" target="_blank" rel="noopener"><span>SedatOnat.com</span> <span class="arr">↗</span></a></li>
+      <li><a href="https://www.tedarikzinciriportali.com" target="_blank" rel="noopener"><span>TedarikZinciriPortali</span> <span class="arr">↗</span></a></li>
+      <li><a href="https://tzp.news" target="_blank" rel="noopener"><span>TZP.news</span> <span class="arr">↗</span></a></li>
+      <li><a href="https://github.com/sedatonat" target="_blank" rel="noopener"><span>GitHub</span> <span class="arr">↗</span></a></li>
+      <li><a href="https://twitter.com/sedatonat" target="_blank" rel="noopener"><span>X / Twitter</span> <span class="arr">↗</span></a></li>
+      <li><a href="https://www.linkedin.com/in/sedatonat/" target="_blank" rel="noopener"><span>LinkedIn</span> <span class="arr">↗</span></a></li>
+      <li><a href="mailto:info@sedatonat.com?subject=%5BSedatOnat.dev%5D%20Hello"><span>info@sedatonat.com</span> <span class="arr">→</span></a></li>
+    </ul>
+  </div>
+  <div class="footer-meta">
+    <div>© <span id="year">2026</span> Sedat Onat</div>
+    <div data-en="Static · No tracking · GitHub Pages" data-tr="Statik · İzleme yok · GitHub Pages">Static · No tracking · GitHub Pages</div>
+  </div>
+  <div class="section-marker">.04 / 04</div>
+</section>
+
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Language toggle
+  const langBtns = document.querySelectorAll('.lang-toggle button');
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const text = el.getAttribute('data-' + lang);
+      if (text) el.innerHTML = text;
+    });
+    langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    try { localStorage.setItem('sodev_lang', lang); } catch(e) {}
+  }
+  langBtns.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+  try {
+    const saved = localStorage.getItem('sodev_lang');
+    if (saved === 'tr' || saved === 'en') setLang(saved);
+    else if ((navigator.language || '').toLowerCase().startsWith('tr')) setLang('tr');
+  } catch(e) {}
+
+  // Reveal on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Progress rail + nav scroll background
+  const sections = ['hero', 'work', 'swift', 'contact'];
+  const dots = document.querySelectorAll('.progress-rail .dot');
+  const sectionEls = sections.map(id => document.getElementById(id));
+  const nav = document.getElementById('nav');
+
+  const progressIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && e.intersectionRatio >= 0.4) {
+        const idx = sections.indexOf(e.target.id);
+        if (idx >= 0) dots.forEach((d, i) => d.classList.toggle('active', i === idx));
       }
-    } catch(e) {}
+    });
+  }, { threshold: [0.4, 0.6] });
+  sectionEls.forEach(s => s && progressIO.observe(s));
 
-    // Fade-up reveal
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
-  </script>
+  dots.forEach(d => {
+    d.addEventListener('click', () => {
+      const target = document.getElementById(d.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+</script>
 </body>
 </html>
