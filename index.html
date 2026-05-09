@@ -28,6 +28,7 @@
     --line: rgba(255,255,255,0.18);
     --line-soft: rgba(255,255,255,0.08);
     --warm: #d8c8a8;
+    --accent: #c97b3f;
   }
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -195,7 +196,7 @@
     padding: 22px 0;
     transition: color .25s, padding-left .25s;
   }
-  .projects a:hover { color: var(--fg); padding-left: 8px; }
+  .projects a:hover { color: var(--accent); padding-left: 8px; }
   .projects .num {
     font-family: 'JetBrains Mono', monospace;
     font-size: 15px; letter-spacing: 0.25em;
@@ -207,7 +208,7 @@
     color: var(--fg-2); letter-spacing: -0.01em;
     transition: color .25s;
   }
-  .projects a:hover .name-l { color: var(--fg); }
+  .projects a:hover .name-l { color: var(--accent); }
   .projects .meta {
     font-family: 'JetBrains Mono', monospace;
     font-size: 14px; letter-spacing: 0.3em;
@@ -219,7 +220,7 @@
     transition: transform .25s, color .25s;
     width: 16px; text-align: right;
   }
-  .projects a:hover .arr { color: var(--fg); transform: translate(4px, -4px); }
+  .projects a:hover .arr { color: var(--accent); transform: translate(4px, -4px); }
   .projects .featured .name-l { color: var(--fg); font-weight: 500; }
 
   .projects-foot {
