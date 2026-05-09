@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Sedat Onat — Patient systems, quietly built. Supply chain, data analytics, Swift, and writing.">
+<meta name="description" content="Sedat Onat — Kitaplar. Rakamlar. Kodlar. Bir satınalma yazarının paralel atölyesi.">
 <meta name="author" content="Sedat Onat">
-<meta property="og:title" content="Sedat Onat">
-<meta property="og:description" content="Patient systems, quietly built.">
+<meta property="og:title" content="Sedat Onat — Kitaplar · Rakamlar · Kodlar">
+<meta property="og:description" content="Bir satınalma yazarının paralel atölyesi.">
 <meta property="og:url" content="https://sedatonat.dev">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sedat Onat">
+<meta name="twitter:title" content="Sedat Onat — Kitaplar · Rakamlar · Kodlar">
 <meta name="theme-color" content="#000000">
-<title>Sedat Onat — Patient systems, quietly built.</title>
+<title>Sedat Onat — Kitaplar · Rakamlar · Kodlar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Inter:wght@200;300;500;700&family=Cormorant+Garamond:ital,wght@1,300&family=JetBrains+Mono:wght@400&display=swap">
@@ -37,10 +37,8 @@
   html { scroll-behavior: smooth; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg);
-    color: var(--fg);
-    line-height: 1.5;
-    overflow-x: hidden;
+    background: var(--bg); color: var(--fg);
+    line-height: 1.5; overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     font-weight: 300;
@@ -49,11 +47,7 @@
   a { color: inherit; text-decoration: none; }
   button { font: inherit; cursor: pointer; background: transparent; border: 0; color: inherit; }
 
-  .mono { font-family: 'JetBrains Mono', monospace; }
-  .brand { font-family: 'Bruno Ace SC', sans-serif; }
-  .serif-it { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; }
-
-  /* ═══════════ NAV ═══════════ */
+  /* NAV */
   .nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: grid; grid-template-columns: 1fr auto 1fr;
@@ -81,30 +75,24 @@
   .nav .right a:hover { color: var(--fg); }
   .lang-toggle { display: flex; gap: 4px; }
   .lang-toggle button {
-    color: var(--fg-3); padding: 0; letter-spacing: 0.3em;
-    transition: color .2s;
+    color: var(--fg-3); padding: 0; letter-spacing: 0.3em; transition: color .2s;
   }
   .lang-toggle button.active { color: var(--fg); }
   .lang-toggle button:hover:not(.active) { color: var(--fg-2); }
   .lang-toggle .sep { color: var(--fg-5); }
 
-  /* ═══════════ HERO ═══════════ */
+  /* HERO */
   .hero {
-    position: relative;
-    min-height: 100vh;
+    position: relative; min-height: 100vh;
     display: flex; flex-direction: column; justify-content: center;
-    padding: 0 56px;
-    overflow: hidden;
+    padding: 0 56px; overflow: hidden;
   }
-  /* Letterbox bars */
   .hero::before, .hero::after {
     content: ""; position: absolute; left: 0; right: 0;
-    height: 80px; background: var(--bg); z-index: 3;
-    pointer-events: none;
+    height: 80px; background: var(--bg); z-index: 3; pointer-events: none;
   }
   .hero::before { top: 0; }
   .hero::after { bottom: 0; }
-  /* atmosphere */
   .hero-atmos {
     position: absolute; inset: 0; z-index: 0;
     background:
@@ -123,8 +111,7 @@
     -webkit-mask-image: radial-gradient(ellipse 60% 50% at center, black, transparent 75%);
   }
   .hero-content {
-    position: relative; z-index: 2;
-    width: 100%;
+    position: relative; z-index: 2; width: 100%;
     display: flex; flex-direction: column; align-items: flex-start;
   }
   .hero-eyebrow {
@@ -134,22 +121,18 @@
   }
   .hero-eyebrow::before { content: "/ "; color: var(--fg-4); }
   .hero-title {
-    font-family: 'Inter', sans-serif;
-    font-weight: 200; color: var(--fg);
-    font-size: clamp(64px, 13vw, 200px);
-    line-height: 0.92; letter-spacing: -0.04em;
-    margin: 0;
+    font-family: 'Inter', sans-serif; font-weight: 200; color: var(--fg);
+    font-size: clamp(56px, 11vw, 168px);
+    line-height: 0.92; letter-spacing: -0.04em; margin: 0;
   }
-  .hero-title .accent { font-style: italic; font-weight: 300; font-family: 'Cormorant Garamond', serif; letter-spacing: -0.02em; }
+  .hero-title .it { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; letter-spacing: -0.02em; }
   .hero-bottom {
     position: absolute; left: 56px; right: 56px; bottom: 110px;
     z-index: 4; display: grid;
-    grid-template-columns: 1fr auto 1fr; gap: 40px;
-    align-items: end;
+    grid-template-columns: 1fr auto 1fr; gap: 40px; align-items: end;
   }
   .hero-bottom .copy {
-    max-width: 280px;
-    font-size: 13px; line-height: 1.65;
+    max-width: 320px; font-size: 13px; line-height: 1.65;
     color: var(--fg-2); font-weight: 300;
   }
   .hero-bottom .copy strong { color: var(--fg); font-weight: 500; }
@@ -162,18 +145,17 @@
     border-radius: 999px;
   }
   .hero-cta:hover { background: var(--fg); color: var(--bg); border-color: var(--fg); }
-  .hero-cta .arr { font-size: 14px; }
   .hero-meta {
-    text-align: right; max-width: 280px; margin-left: auto;
+    text-align: right; max-width: 320px; margin-left: auto;
     font-family: 'Cormorant Garamond', serif;
     font-style: italic; font-weight: 300;
     font-size: 14px; line-height: 1.5; color: var(--fg-2);
   }
   .hero-meta .src {
     display: block; margin-top: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-style: normal; font-size: 9px;
-    letter-spacing: 0.3em; color: var(--fg-4); text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; font-style: normal;
+    font-size: 9px; letter-spacing: 0.3em;
+    color: var(--fg-4); text-transform: uppercase;
   }
   .scroll-indicator {
     position: absolute; left: 50%; bottom: 40px; transform: translateX(-50%);
@@ -192,12 +174,9 @@
     50% { transform: scaleY(0.4); transform-origin: top; opacity: 1; }
   }
 
-  /* ═══════════ COMMON SECTION ═══════════ */
+  /* SECTIONS */
   section { padding: 140px 56px; position: relative; }
-  .section-divider {
-    height: 1px; background: var(--line);
-    margin: 0 56px;
-  }
+  .section-divider { height: 1px; background: var(--line); margin: 0 56px; }
   .slash-tag {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px; letter-spacing: 0.3em; color: var(--fg-3);
@@ -205,14 +184,11 @@
     display: flex; align-items: center; gap: 14px;
   }
   .slash-tag::before { content: "/"; color: var(--fg-4); font-size: 14px; }
-  .slash-tag .num {
-    color: var(--fg-4); margin-left: auto; font-size: 10px;
-  }
+  .slash-tag .num { color: var(--fg-4); margin-left: auto; font-size: 10px; }
 
-  /* ═══════════ ABOUT (editorial 3-col like ref 1) ═══════════ */
+  /* ABOUT */
   .about-grid {
-    display: grid;
-    grid-template-columns: 200px 1fr 1.1fr;
+    display: grid; grid-template-columns: 200px 1fr 1.1fr;
     gap: 60px; align-items: start;
   }
   .side-nav {
@@ -225,8 +201,7 @@
   .side-nav .item.active { color: var(--fg); }
   .side-nav .item.active::before { content: "▸ "; color: var(--fg); }
   .side-nav .group {
-    margin-top: 28px; padding-top: 20px;
-    border-top: 1px solid var(--line);
+    margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line);
   }
   .about-title {
     font-family: 'Inter', sans-serif; font-weight: 200;
@@ -236,14 +211,13 @@
   .about-title::before { content: "/ "; color: var(--fg-4); font-weight: 300; }
   .about-body p {
     font-size: 14px; line-height: 1.85; color: var(--fg-2);
-    font-weight: 300; max-width: 420px;
-    margin-bottom: 18px;
+    font-weight: 300; max-width: 440px; margin-bottom: 18px;
   }
   .about-body p strong { color: var(--fg); font-weight: 500; }
+  .about-body p em { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--fg); }
   .about-visual {
     aspect-ratio: 4/5; position: relative;
-    background:
-      linear-gradient(135deg, #1a1a1c 0%, #0a0a0c 100%);
+    background: linear-gradient(135deg, #1a1a1c 0%, #0a0a0c 100%);
     overflow: hidden; border: 1px solid var(--line);
   }
   .about-visual::before {
@@ -258,10 +232,7 @@
     background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.08) 30%, rgba(255,255,255,0.04) 60%, transparent 100%);
     filter: blur(20px);
   }
-  .about-visual .frame-corner {
-    position: absolute; width: 22px; height: 22px;
-    border: 1px solid var(--line-2);
-  }
+  .about-visual .frame-corner { position: absolute; width: 22px; height: 22px; border: 1px solid var(--line-2); }
   .about-visual .fc-tl { top: 18px; left: 18px; border-right: 0; border-bottom: 0; }
   .about-visual .fc-tr { top: 18px; right: 18px; border-left: 0; border-bottom: 0; }
   .about-visual .fc-bl { bottom: 18px; left: 18px; border-right: 0; border-top: 0; }
@@ -283,146 +254,146 @@
     text-transform: uppercase; font-style: normal; margin-top: 6px;
   }
 
-  /* ═══════════ WORK GRID (image cards like ref 2) ═══════════ */
-  .work-section { padding-top: 100px; }
-  .work-header {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
-    align-items: end; margin-bottom: 70px;
-  }
-  .work-headline {
-    font-family: 'Inter', sans-serif; font-weight: 200;
-    font-size: clamp(48px, 7vw, 96px); line-height: 0.95;
-    letter-spacing: -0.04em;
-  }
-  .work-headline em {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic; font-weight: 300; letter-spacing: -0.02em;
-  }
-  .work-intro {
-    font-size: 14px; line-height: 1.75; color: var(--fg-2);
-    font-weight: 300; max-width: 440px; padding-bottom: 12px;
-  }
-  .work-cards {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
-  }
-  .card {
-    aspect-ratio: 3/4; position: relative; overflow: hidden;
-    background: var(--bg-2); border: 1px solid var(--line);
-    transition: all .55s cubic-bezier(.2,.7,.3,1);
-    color: var(--fg);
-  }
-  .card:hover { border-color: var(--line-2); transform: translateY(-6px); }
-  .card-bg {
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, var(--bg-3) 0%, var(--bg-2) 60%, var(--bg-1) 100%);
-  }
-  .card-1 .card-bg::after {
-    content: ""; position: absolute; left: 12%; right: 12%; bottom: 18%;
-    height: 36%;
-    background:
-      linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 8%, transparent 9%, transparent 16%, rgba(255,255,255,0.65) 16%, transparent 21%, transparent 28%, rgba(255,255,255,0.4) 28%, transparent 36%, transparent 44%, rgba(255,255,255,0.7) 44%, transparent 52%, transparent 58%, rgba(255,255,255,0.55) 58%, transparent 64%, transparent 72%, rgba(255,255,255,0.45) 72%, transparent 80%, transparent 88%, rgba(255,255,255,0.6) 88%, transparent 96%);
-    mask-image: linear-gradient(to top, black 30%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to top, black 30%, transparent 100%);
-    opacity: 0.55;
-  }
-  .card-2 .card-bg::after {
-    content: "{ }"; position: absolute;
-    left: 50%; top: 35%; transform: translateX(-50%);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 80px; color: var(--fg-5);
-    letter-spacing: -0.02em;
-  }
-  .card-3 .card-bg::after {
-    content: "“ ”"; position: absolute;
-    left: 50%; top: 30%; transform: translateX(-50%);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 110px; color: var(--fg-5);
-    letter-spacing: -0.05em; font-style: italic;
-  }
-  .card-info {
-    position: absolute; bottom: 24px; left: 24px; right: 24px;
-    display: flex; justify-content: space-between; align-items: flex-end;
-    z-index: 2;
-  }
-  .card-info .lbl {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px; letter-spacing: 0.3em; color: var(--fg-3);
-    text-transform: uppercase; margin-bottom: 6px;
-  }
-  .card-info h3 {
-    font-family: 'Inter', sans-serif; font-weight: 300;
-    font-size: 22px; letter-spacing: -0.01em; line-height: 1;
-  }
-  .card-info .arr {
-    width: 36px; height: 36px; border: 1px solid var(--line-2);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 13px; transition: all .3s;
-  }
-  .card:hover .card-info .arr { background: var(--fg); color: var(--bg); border-color: var(--fg); }
-  .card-num {
-    position: absolute; top: 22px; left: 24px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; letter-spacing: 0.3em; color: var(--fg-3);
-    z-index: 2;
-  }
-
-  /* ═══════════ FIELD NOTES (Swift section) ═══════════ */
-  .notes-grid {
-    display: grid; grid-template-columns: 1.3fr 1fr;
-    gap: 80px; align-items: center;
-  }
-  .notes-visual {
-    aspect-ratio: 5/4;
-    background: linear-gradient(135deg, var(--bg-3) 0%, var(--bg-1) 100%);
-    border: 1px solid var(--line);
-    padding: 36px 40px; position: relative;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; line-height: 1.95; color: var(--fg-2);
-    overflow: hidden;
-  }
-  .notes-visual .meta-top {
-    display: flex; justify-content: space-between;
-    font-size: 9px; letter-spacing: 0.3em; color: var(--fg-3);
-    text-transform: uppercase; margin-bottom: 24px;
-    padding-bottom: 16px; border-bottom: 1px solid var(--line);
-  }
-  .notes-visual .cm { color: var(--fg-4); font-style: italic; }
-  .notes-visual .kw { color: var(--fg); }
-  .notes-visual .str { color: var(--warm); }
-  .notes-visual .typ { color: var(--fg-2); }
-  .notes-side .lbl {
+  /* PILLAR SECTION */
+  .pillar { display: grid; gap: 80px; align-items: center; }
+  .pillar.left { grid-template-columns: 1fr 1.1fr; }
+  .pillar.right { grid-template-columns: 1.1fr 1fr; }
+  .pillar.right .pillar-text { order: 2; }
+  .pillar-text .lbl {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px; letter-spacing: 0.3em; color: var(--fg-3);
     text-transform: uppercase; margin-bottom: 24px;
   }
-  .notes-side .lbl::before { content: "/ "; color: var(--fg-4); }
-  .notes-side h2 {
+  .pillar-text .lbl::before { content: "/ "; color: var(--fg-4); }
+  .pillar-text h2 {
     font-family: 'Inter', sans-serif; font-weight: 200;
-    font-size: clamp(36px, 4.5vw, 64px); line-height: 0.98;
-    letter-spacing: -0.04em; margin-bottom: 24px;
+    font-size: clamp(48px, 7vw, 96px); line-height: 0.95;
+    letter-spacing: -0.04em; margin-bottom: 20px;
   }
-  .notes-side h2 em {
+  .pillar-text h2 em {
     font-family: 'Cormorant Garamond', serif;
-    font-style: italic; font-weight: 300;
+    font-style: italic; font-weight: 300; letter-spacing: -0.02em;
   }
-  .notes-side p {
-    font-size: 14px; line-height: 1.7; color: var(--fg-2);
-    font-weight: 300; margin-bottom: 32px; max-width: 380px;
+  .pillar-text .sub {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-weight: 300; font-size: 18px; color: var(--fg-2);
+    margin-bottom: 24px; line-height: 1.4;
   }
-  .link-arrow {
-    display: inline-flex; align-items: center; gap: 14px;
+  .pillar-text p {
+    font-size: 14px; line-height: 1.75; color: var(--fg-2);
+    font-weight: 300; max-width: 440px; margin-bottom: 32px;
+  }
+  .pillar-list {
+    list-style: none; max-width: 460px;
+  }
+  .pillar-list li {
+    padding: 14px 0; border-top: 1px solid var(--line);
+  }
+  .pillar-list li:last-child { border-bottom: 1px solid var(--line); }
+  .pillar-list a {
+    display: grid; grid-template-columns: 1fr auto auto; gap: 16px;
+    align-items: center; transition: padding-left .25s, color .25s;
+  }
+  .pillar-list a:hover { padding-left: 6px; color: var(--fg); }
+  .pillar-list .name {
+    font-size: 14px; font-weight: 400; color: var(--fg-2); transition: color .25s;
+  }
+  .pillar-list a:hover .name { color: var(--fg); }
+  .pillar-list .meta {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
-    padding-bottom: 6px; border-bottom: 1px solid var(--fg);
-    transition: gap .3s;
+    font-size: 9px; letter-spacing: 0.25em; color: var(--fg-4);
+    text-transform: uppercase;
   }
-  .link-arrow:hover { gap: 22px; }
+  .pillar-list .arr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--fg-4); transition: transform .25s, color .25s;
+  }
+  .pillar-list a:hover .arr { color: var(--fg); transform: translateX(4px); }
+  .pillar-list .featured .name { color: var(--fg); font-weight: 500; }
+  .pillar-list .featured .meta { color: var(--warm); }
 
-  /* ═══════════ PULL QUOTE ═══════════ */
-  .quote {
-    text-align: center; padding: 180px 56px;
+  /* PILLAR VISUAL CARDS */
+  .pillar-visual {
+    aspect-ratio: 4/5; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, var(--bg-3) 0%, var(--bg-1) 100%);
+    border: 1px solid var(--line);
+    transition: border-color .4s;
+  }
+  .pillar-visual:hover { border-color: var(--line-2); }
+  .pv-num {
+    position: absolute; top: 22px; left: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.3em; color: var(--fg-3);
+  }
+  .pv-meta {
+    position: absolute; top: 22px; right: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.3em; color: var(--fg-3);
+    text-transform: uppercase;
+  }
+  .pv-bottom {
+    position: absolute; bottom: 24px; left: 24px; right: 24px;
+  }
+  .pv-bottom .ttl {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-weight: 300; font-size: 22px; color: var(--fg);
+    line-height: 1.2; margin-bottom: 4px;
+  }
+  .pv-bottom .ttl-en {
+    font-family: 'Inter', sans-serif; font-weight: 300;
+    font-size: 13px; color: var(--fg-3);
+  }
+
+  .pv-books { background: linear-gradient(180deg, #1a1a1c 0%, #0a0a0c 70%, #050506 100%); }
+  .pv-books-stack {
+    position: absolute; left: 50%; top: 48%; transform: translate(-50%, -50%);
+    display: flex; gap: 6px; align-items: flex-end;
+  }
+  .pv-books-stack > div {
+    width: 22px; background: linear-gradient(180deg, #2a2a2e, #15151a);
+    border-top: 1px solid rgba(255,255,255,0.12);
+    border-left: 1px solid rgba(255,255,255,0.04);
     position: relative;
   }
+  .pv-books-stack > div::after {
+    content: ""; position: absolute; left: 50%; bottom: 12px;
+    width: 8px; height: 1px; background: var(--warm); opacity: 0.5;
+    transform: translateX(-50%);
+  }
+
+  .pv-nums-bars {
+    position: absolute; left: 16%; right: 16%; bottom: 20%;
+    height: 42%; display: flex; gap: 7px; align-items: flex-end;
+  }
+  .pv-nums-bars > div {
+    flex: 1;
+    background: linear-gradient(180deg, rgba(244,244,244,0.55), rgba(244,244,244,0.1));
+    border-top: 1px solid var(--fg);
+    transform-origin: bottom;
+  }
+  .visible .pv-nums-bars > div {
+    animation: bar-up 1.4s cubic-bezier(.2,.7,.3,1) backwards;
+  }
+  @keyframes bar-up { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  .pv-nums .grid-lines {
+    position: absolute; left: 16%; right: 16%; top: 30%; bottom: 20%;
+    background-image: linear-gradient(transparent 24%, rgba(255,255,255,0.04) 25%, transparent 26%, transparent 49%, rgba(255,255,255,0.04) 50%, transparent 51%, transparent 74%, rgba(255,255,255,0.04) 75%, transparent 76%);
+  }
+
+  .pv-codes { padding: 36px 30px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; line-height: 1.95; color: var(--fg-2); }
+  .pv-codes .top {
+    display: flex; justify-content: space-between; gap: 16px;
+    font-size: 9px; letter-spacing: 0.3em; color: var(--fg-3);
+    text-transform: uppercase; margin-bottom: 24px;
+    padding-bottom: 14px; border-bottom: 1px solid var(--line);
+  }
+  .pv-codes .cm { color: var(--fg-4); font-style: italic; }
+  .pv-codes .kw { color: var(--fg); }
+  .pv-codes .str { color: var(--warm); }
+  .pv-codes .pr { color: var(--fg-3); }
+  .pv-codes .out { color: var(--fg); }
+
+  .quote { text-align: center; padding: 180px 56px; position: relative; }
   .quote::before {
     content: "//"; position: absolute; top: 80px; left: 50%; transform: translateX(-50%);
     font-family: 'JetBrains Mono', monospace; font-size: 14px;
@@ -440,11 +411,9 @@
     display: block; margin-top: 36px;
     font-family: 'JetBrains Mono', monospace;
     font-style: normal; font-size: 10px;
-    letter-spacing: 0.4em; color: var(--fg-4);
-    text-transform: uppercase;
+    letter-spacing: 0.4em; color: var(--fg-4); text-transform: uppercase;
   }
 
-  /* ═══════════ CONTACT (newsletter style + list) ═══════════ */
   .contact-row {
     display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
     align-items: center; padding-bottom: 60px;
@@ -456,10 +425,10 @@
     letter-spacing: -0.03em; max-width: 480px;
   }
   .contact-headline::before { content: "/ "; color: var(--fg-4); }
+  .contact-headline em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; }
   .contact-form {
     display: flex; align-items: center; gap: 16px;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line); padding-bottom: 14px;
   }
   .contact-form input {
     flex: 1; background: transparent; border: 0; outline: 0;
@@ -470,13 +439,11 @@
   .contact-form button {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px; letter-spacing: 0.3em; color: var(--fg);
-    text-transform: uppercase; padding: 6px 0;
-    transition: color .2s;
+    text-transform: uppercase; padding: 6px 0; transition: color .2s;
   }
   .contact-form button:hover { color: var(--warm); }
   .contact-list {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px;
-    margin-top: 60px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; margin-top: 60px;
   }
   .contact-list h4 {
     font-family: 'JetBrains Mono', monospace;
@@ -485,9 +452,7 @@
   }
   .contact-list h4::before { content: "/ "; color: var(--fg-4); }
   .contact-list ul { list-style: none; }
-  .contact-list li {
-    padding: 8px 0; border-top: 1px solid var(--line);
-  }
+  .contact-list li { padding: 8px 0; border-top: 1px solid var(--line); }
   .contact-list li:last-child { border-bottom: 1px solid var(--line); }
   .contact-list a {
     display: flex; justify-content: space-between; align-items: center;
@@ -498,14 +463,9 @@
   .contact-list a .arr { font-size: 11px; color: var(--fg-4); transition: transform .25s, color .25s; }
   .contact-list a:hover .arr { transform: translateX(4px); color: var(--fg); }
 
-  /* ═══════════ FOOTER ═══════════ */
-  footer {
-    padding: 100px 56px 36px;
-    border-top: 1px solid var(--line);
-  }
+  footer { padding: 100px 56px 36px; border-top: 1px solid var(--line); }
   .foot-grid {
-    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px;
-    margin-bottom: 80px;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 80px;
   }
   .foot-brand .mark {
     font-family: 'Bruno Ace SC', sans-serif;
@@ -524,8 +484,7 @@
   .foot-col h5::before { content: "/ "; color: var(--fg-4); }
   .foot-col a {
     display: block; font-size: 13px; color: var(--fg-2);
-    padding: 6px 0; transition: color .2s;
-    font-weight: 300;
+    padding: 6px 0; transition: color .2s; font-weight: 300;
   }
   .foot-col a:hover { color: var(--fg); }
   .foot-meta {
@@ -536,15 +495,12 @@
     color: var(--fg-4); text-transform: uppercase;
   }
 
-  /* ═══════════ ANIMATIONS ═══════════ */
   .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1.1s cubic-bezier(.2,.7,.3,1), transform 1.1s cubic-bezier(.2,.7,.3,1); }
   .reveal.in { opacity: 1; transform: translateY(0); }
   .reveal-1 { transition-delay: .08s; }
   .reveal-2 { transition-delay: .18s; }
   .reveal-3 { transition-delay: .28s; }
-  .reveal-4 { transition-delay: .38s; }
 
-  /* ═══════════ RESPONSIVE ═══════════ */
   @media (max-width: 1024px) {
     .nav { padding: 22px 32px; }
     .hero, section, footer, .section-divider { padding-left: 32px; padding-right: 32px; }
@@ -553,10 +509,9 @@
     .about-grid { grid-template-columns: 1fr; gap: 48px; }
     .side-nav { display: flex; flex-wrap: wrap; gap: 18px 28px; line-height: 1.5; }
     .side-nav .group { margin-top: 0; padding-top: 0; border-top: 0; display: contents; }
-    .work-cards { grid-template-columns: repeat(2, 1fr); }
-    .notes-grid { grid-template-columns: 1fr; gap: 48px; }
-    .notes-grid .notes-visual { order: 2; }
-    .work-header { grid-template-columns: 1fr; gap: 32px; }
+    .pillar.left, .pillar.right { grid-template-columns: 1fr; gap: 48px; }
+    .pillar.right .pillar-text { order: 1; }
+    .pillar.right .pillar-visual { order: 2; }
     .contact-row { grid-template-columns: 1fr; gap: 40px; }
     .contact-list { grid-template-columns: repeat(2, 1fr); gap: 32px; }
     .foot-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
@@ -570,7 +525,6 @@
     .hero-bottom .copy, .hero-meta { max-width: 100%; }
     .hero-meta { text-align: left; margin-left: 0; }
     .scroll-indicator { display: none; }
-    .work-cards { grid-template-columns: 1fr; }
     .contact-list { grid-template-columns: 1fr; gap: 24px; }
     .foot-grid { grid-template-columns: 1fr; gap: 32px; }
     .quote { padding: 100px 20px; }
@@ -581,13 +535,13 @@
 
 <nav class="nav" id="nav">
   <a href="#top" class="brand-mark">SEDAT ONAT</a>
-  <div class="center" data-en="Patient Systems · Quietly Built" data-tr="Sabırlı Sistemler · Sessizce İnşa Edilir">Patient Systems · Quietly Built</div>
+  <div class="center" data-en="Books · Numbers · Codes" data-tr="Kitaplar · Rakamlar · Kodlar">Kitaplar · Rakamlar · Kodlar</div>
   <div class="right">
     <div class="lang-toggle" role="group" aria-label="Language">
-      <button class="active" data-lang="en">EN</button><span class="sep">/</span><button data-lang="tr">TR</button>
+      <button data-lang="en">EN</button><span class="sep">/</span><button class="active" data-lang="tr">TR</button>
     </div>
-    <a href="mailto:info@sedatonat.com" data-en="Contact" data-tr="İletişim">Contact</a>
-    <a href="#contact" data-en="Menu" data-tr="Menü">Menu</a>
+    <a href="mailto:info@sedatonat.com" data-en="Contact" data-tr="İletişim">İletişim</a>
+    <a href="#contact" data-en="Menu" data-tr="Menü">Menü</a>
   </div>
 </nav>
 
@@ -596,19 +550,19 @@
   <div class="hero-grid"></div>
 
   <div class="hero-content reveal in">
-    <div class="hero-eyebrow" data-en="Sedat Onat — Est. TR · 2026" data-tr="Sedat Onat — Est. TR · 2026">Sedat Onat — Est. TR · 2026</div>
-    <h1 class="hero-title">Patient<br><span class="accent">systems.</span></h1>
+    <div class="hero-eyebrow" data-en="Sedat Onat — Purchasing Manager · Writer · Builder" data-tr="Sedat Onat — Satınalma Yöneticisi · Yazar · Yapıcı">Sedat Onat — Satınalma Yöneticisi · Yazar · Yapıcı</div>
+    <h1 class="hero-title">Kitaplar.<br><span class="it">Rakamlar.</span><br>Kodlar.</h1>
   </div>
 
   <div class="hero-bottom">
-    <p class="copy reveal reveal-2 in" data-en="Supply chain, data, and code. <strong>Built for decisions</strong> — not for trend cycles. The work here is the parallel notebook to a long career in operations." data-tr="Tedarik zinciri, veri ve kod. <strong>Karar için inşa edilmiş</strong> — moda döngüleri için değil. Burası uzun bir operasyon kariyerinin paralel defteri.">Supply chain, data, and code. <strong>Built for decisions</strong> — not for trend cycles. The work here is the parallel notebook to a long career in operations.</p>
-    <a href="#work" class="hero-cta reveal reveal-3 in" data-en="Available work →" data-tr="Mevcut çalışmalar →"><span data-en="Available work" data-tr="Mevcut çalışmalar">Available work</span><span class="arr">→</span></a>
-    <p class="hero-meta reveal reveal-4 in">"Quietly powerful — minimalism that captures attention, even in silence."<span class="src" data-en="Operating Principle" data-tr="Çalışma İlkesi">Operating Principle</span></p>
+    <p class="copy reveal reveal-2 in" data-en="Two decades in supply chain and purchasing. <strong>TedarikZinciriPortali.com</strong> is the main publication; this site is its <strong>parallel atelier</strong> — Power BI dashboards, Swift notes, and tools built with Claude Cowork." data-tr="Tedarik zinciri ve satınalmada yirmi yıl. <strong>TedarikZinciriPortali.com</strong> ana yayın evim; burası onun <strong>paralel atölyesi</strong> — Power BI panoları, Swift notları ve Claude Cowork ile inşa edilen araçlar.">Tedarik zinciri ve satınalmada yirmi yıl. <strong>TedarikZinciriPortali.com</strong> ana yayın evim; burası onun <strong>paralel atölyesi</strong> — Power BI panoları, Swift notları ve Claude Cowork ile inşa edilen araçlar.</p>
+    <a href="#kitaplar" class="hero-cta reveal reveal-3 in"><span data-en="Enter the atelier" data-tr="Atölyeye gir">Atölyeye gir</span><span>→</span></a>
+    <p class="hero-meta reveal reveal-3 in" data-en="“Tedarik Zinciri'ne gönül vermiş insanlardan oluşan, kar amacı gütmeyen, güzel bir aileyiz...”" data-tr="“Tedarik Zinciri'ne gönül vermiş insanlardan oluşan, kar amacı gütmeyen, güzel bir aileyiz...”">"Tedarik Zinciri'ne gönül vermiş insanlardan oluşan, kar amacı gütmeyen, güzel bir aileyiz..."<span class="src" data-en="TZP — Manifesto" data-tr="TZP — Manifesto">TZP — Manifesto</span></p>
   </div>
 
-  <div class="scroll-indicator reveal reveal-4 in">
+  <div class="scroll-indicator reveal reveal-3 in">
     <div class="line"></div>
-    <span data-en="Scroll" data-tr="Kaydır">Scroll</span>
+    <span data-en="Scroll" data-tr="Kaydır">Kaydır</span>
   </div>
 </header>
 
@@ -617,30 +571,32 @@
 <section id="about">
   <div class="about-grid">
     <nav class="side-nav reveal">
-      <a href="#about" class="item active" data-en="About" data-tr="Hakkında">About</a>
-      <a href="#work" class="item" data-en="Field work" data-tr="Saha çalışmaları">Field work</a>
-      <a href="#notes" class="item" data-en="Notes" data-tr="Notlar">Notes</a>
-      <a href="#contact" class="item" data-en="Contact" data-tr="İletişim">Contact</a>
+      <a href="#about" class="item active" data-en="About" data-tr="Hakkında">Hakkında</a>
+      <a href="#kitaplar" class="item" data-en="Books" data-tr="Kitaplar">Kitaplar</a>
+      <a href="#rakamlar" class="item" data-en="Numbers" data-tr="Rakamlar">Rakamlar</a>
+      <a href="#kodlar" class="item" data-en="Codes" data-tr="Kodlar">Kodlar</a>
+      <a href="#contact" class="item" data-en="Contact" data-tr="İletişim">İletişim</a>
       <div class="group">
         <a href="https://www.sedatonat.com" target="_blank" rel="noopener" class="item">SedatOnat.com</a>
         <a href="https://www.tedarikzinciriportali.com" target="_blank" rel="noopener" class="item">TedarikZinciriPortali</a>
         <a href="https://tzp.news" target="_blank" rel="noopener" class="item">TZP.news</a>
+        <a href="https://www.sedatonat.photography" target="_blank" rel="noopener" class="item">Photography</a>
       </div>
     </nav>
 
     <div class="about-body reveal reveal-1">
-      <h2 class="about-title" data-en="About<br>Sedat Onat" data-tr="Sedat<br>Onat Hakkında">About<br>Sedat Onat</h2>
-      <p data-en="<strong>A systems builder by trade.</strong> Two decades inside supply chain and purchasing — sourcing, inventory, planning, contracts. The kind of work where every decision compounds and every error has a long tail." data-tr="<strong>Mesleği gereği sistem inşa eden biri.</strong> Tedarik zinciri ve satınalmada yirmi yıl — kaynak bulma, envanter, planlama, sözleşmeler. Her kararın katlandığı, her hatanın uzun bir kuyruğu olduğu iş alanı.">
-        <strong>A systems builder by trade.</strong> Two decades inside supply chain and purchasing — sourcing, inventory, planning, contracts. The kind of work where every decision compounds and every error has a long tail.
+      <h2 class="about-title" data-en="About<br>Sedat Onat" data-tr="Sedat Onat<br>hakkında">Sedat Onat<br>hakkında</h2>
+      <p data-en="<strong>A purchasing manager by trade, a writer by habit, a builder by curiosity.</strong> Twenty years inside supply chain and purchasing — sourcing, planning, contracts, the slow accumulation of decisions that compound." data-tr="<strong>Mesleği gereği satınalma yöneticisi, alışkanlığı gereği yazar, merakı gereği yapıcı.</strong> Tedarik zinciri ve satınalmada yirmi yıl — kaynak bulma, planlama, sözleşmeler, kararların yavaş yavaş katlanması.">
+        <strong>Mesleği gereği satınalma yöneticisi, alışkanlığı gereği yazar, merakı gereği yapıcı.</strong> Tedarik zinciri ve satınalmada yirmi yıl — kaynak bulma, planlama, sözleşmeler, kararların yavaş yavaş katlanması.
       </p>
-      <p data-en="This site is the parallel — a place for software, data, and field notes. Power BI dashboards built for decisions, Swift snippets from the iOS practice, and the writing that ties it all together at TedarikZinciriPortali.com and TZP.news." data-tr="Bu site bunun paraleli — yazılım, veri ve saha notları için bir alan. Karar için inşa edilmiş Power BI panoları, iOS pratiğinden Swift kod örnekleri ve hepsini bir araya getiren yazarlık: TedarikZinciriPortali.com ve TZP.news.">
-        This site is the parallel — a place for software, data, and field notes. Power BI dashboards built for decisions, Swift snippets from the iOS practice, and the writing that ties it all together at TedarikZinciriPortali.com and TZP.news.
+      <p data-en="The writing is the public output. <em>TedarikZinciriPortali.com</em> publishes 226 articles, 167 glossary terms, and weekly supply chain reports. <em>TZP.news</em> runs daily. <em>ErpNasilAlinir.com</em> is a published book. <em>SupplyChainGlossary.com.tr</em> aims to be the largest supply chain glossary in the world." data-tr="Yazı, kamuya açılan yüzü. <em>TedarikZinciriPortali.com</em> 226 makale, 167 sözlük terimi ve haftalık tedarik zinciri raporları yayınlıyor. <em>TZP.news</em> her gün çıkıyor. <em>ErpNasilAlinir.com</em> yayınlanmış bir kitap. <em>SupplyChainGlossary.com.tr</em>'nin hedefi dünyanın en büyük tedarik zinciri sözlüğü olmak.">
+        Yazı, kamuya açılan yüzü. <em>TedarikZinciriPortali.com</em> 226 makale, 167 sözlük terimi ve haftalık tedarik zinciri raporları yayınlıyor. <em>TZP.news</em> her gün çıkıyor. <em>ErpNasilAlinir.com</em> yayınlanmış bir kitap. <em>SupplyChainGlossary.com.tr</em>'nin hedefi dünyanın en büyük tedarik zinciri sözlüğü olmak.
       </p>
-      <p data-en="<strong>The aim is timeless work.</strong> Tools, dashboards, and writing that age well — that read as cleanly in five years as they do today." data-tr="<strong>Amaç, zamana dayanan iş.</strong> Beş yıl sonra da bugün olduğu gibi temiz okunan araçlar, panolar ve yazılar.">
-        <strong>The aim is timeless work.</strong> Tools, dashboards, and writing that age well — that read as cleanly in five years as they do today.
+      <p data-en="<strong>This site — sedatonat.dev — is the parallel atelier.</strong> Where the writing turns into Power BI dashboards, Swift snippets, and now applications built with Claude Cowork. Three columns: <em>Kitaplar · Rakamlar · Kodlar.</em>" data-tr="<strong>Bu site — sedatonat.dev — paralel atölye.</strong> Yazının Power BI panolarına, Swift kod örneklerine ve şimdi de Claude Cowork ile inşa edilen uygulamalara dönüştüğü yer. Üç sütun: <em>Kitaplar · Rakamlar · Kodlar.</em>">
+        <strong>Bu site — sedatonat.dev — paralel atölye.</strong> Yazının Power BI panolarına, Swift kod örneklerine ve şimdi de Claude Cowork ile inşa edilen uygulamalara dönüştüğü yer. Üç sütun: <em>Kitaplar · Rakamlar · Kodlar.</em>
       </p>
 
-      <div class="signature">Sedat Onat<span class="by" data-en="Operator · Builder · Writer" data-tr="Operatör · Yapıcı · Yazar">Operator · Builder · Writer</span></div>
+      <div class="signature">Sedat Onat<span class="by" data-en="Purchasing · Writer · Builder · TR" data-tr="Satınalma · Yazar · Yapıcı · TR">Satınalma · Yazar · Yapıcı · TR</span></div>
     </div>
 
     <figure class="about-visual reveal reveal-2">
@@ -648,95 +604,215 @@
       <span class="frame-corner fc-tr"></span>
       <span class="frame-corner fc-bl"></span>
       <span class="frame-corner fc-br"></span>
-      <div class="label" data-en="Subject · 2026" data-tr="Özne · 2026">Subject · 2026</div>
+      <div class="label" data-en="Subject · Est. 2026" data-tr="Özne · Est. 2026">Özne · Est. 2026</div>
     </figure>
   </div>
 </section>
 
 <div class="section-divider"></div>
 
-<section id="work" class="work-section">
-  <div class="slash-tag reveal" data-en="Field work" data-tr="Saha çalışmaları">Field work<span class="num">/ 03</span></div>
+<section id="kitaplar">
+  <div class="slash-tag reveal" data-en="01 — Books" data-tr="01 — Kitaplar">01 — Kitaplar<span class="num">/ KITAPLAR</span></div>
 
-  <div class="work-header reveal reveal-1">
-    <h2 class="work-headline" data-en="Tools<br>that <em>last</em>." data-tr="Zamana<br><em>dayanan</em> araçlar.">Tools<br>that <em>last</em>.</h2>
-    <p class="work-intro" data-en="Three parallel practices — kept distinct so each can deepen on its own clock. Each one publishes outward to its own home; this site is the index." data-tr="Üç paralel pratik — her biri kendi saatinde derinleşsin diye ayrı tutulmuş. Her biri kendi evine yayın yapar; bu site dizindir.">
-      Three parallel practices — kept distinct so each can deepen on its own clock. Each one publishes outward to its own home; this site is the index.
-    </p>
-  </div>
-
-  <div class="work-cards reveal reveal-2">
-    <a href="https://www.tedarikzinciriportali.com/makale/tags/power-bi-tr" target="_blank" rel="noopener" class="card card-1">
-      <div class="card-bg"></div>
-      <div class="card-num">01 / DATA</div>
-      <div class="card-info">
-        <div>
-          <div class="lbl" data-en="Power BI" data-tr="Power BI">Power BI</div>
-          <h3 data-en="Decision dashboards" data-tr="Karar panoları">Decision dashboards</h3>
-        </div>
-        <span class="arr">→</span>
+  <div class="pillar left">
+    <figure class="pillar-visual pv-books reveal">
+      <div class="pv-num">01 / WORDS</div>
+      <div class="pv-meta" data-en="226 articles" data-tr="226 makale">226 makale</div>
+      <div class="pv-books-stack">
+        <div style="height:180px;"></div>
+        <div style="height:160px;"></div>
+        <div style="height:200px;"></div>
+        <div style="height:140px;"></div>
+        <div style="height:175px;"></div>
+        <div style="height:150px;"></div>
+        <div style="height:190px;"></div>
       </div>
-    </a>
-    <a href="https://swift.sedatonat.dev" target="_blank" rel="noopener" class="card card-2">
-      <div class="card-bg"></div>
-      <div class="card-num">02 / CODE</div>
-      <div class="card-info">
-        <div>
-          <div class="lbl" data-en="Swift · iOS" data-tr="Swift · iOS">Swift · iOS</div>
-          <h3 data-en="Field notes" data-tr="Saha notları">Field notes</h3>
-        </div>
-        <span class="arr">→</span>
+      <div class="pv-bottom">
+        <div class="ttl"><em>Yazı pratiği.</em></div>
+        <div class="ttl-en" data-en="The writing practice." data-tr="On yıllık birikimin yazıya dönüşmesi.">On yıllık birikimin yazıya dönüşmesi.</div>
       </div>
-    </a>
-    <a href="https://www.tedarikzinciriportali.com" target="_blank" rel="noopener" class="card card-3">
-      <div class="card-bg"></div>
-      <div class="card-num">03 / WORDS</div>
-      <div class="card-info">
-        <div>
-          <div class="lbl" data-en="Writing" data-tr="Yazarlık">Writing</div>
-          <h3 data-en="Long-form practice" data-tr="Uzun-form pratik">Long-form practice</h3>
-        </div>
-        <span class="arr">→</span>
-      </div>
-    </a>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<section id="notes">
-  <div class="slash-tag reveal" data-en="Notes · 03 — iOS / Swift" data-tr="Notlar · 03 — iOS / Swift">Notes · 03 — iOS / Swift<span class="num">/ NOTES</span></div>
-
-  <div class="notes-grid">
-    <figure class="notes-visual reveal">
-      <div class="meta-top">
-        <span>ContentView.swift</span><span data-en="Snippet · 001" data-tr="Snippet · 001">Snippet · 001</span>
-      </div>
-<pre style="margin:0;font-family:inherit;font-size:inherit;line-height:inherit;color:inherit;white-space:pre;"><span class="cm">// SwiftUI · iOS</span>
-<span class="kw">import</span> SwiftUI
-
-<span class="kw">struct</span> <span class="typ">ContentView</span>: <span class="typ">View</span> {
-  <span class="kw">var</span> body: some <span class="typ">View</span> {
-    VStack(spacing: 24) {
-      Text(<span class="str">"Patient systems."</span>)
-        .font(.system(.title, design: .serif))
-        .italic()
-      Divider().opacity(0.2)
-      Text(<span class="str">"Quietly built."</span>)
-        .tracking(8)
-    }
-    .padding(40)
-  }
-}</pre>
     </figure>
 
-    <div class="notes-side reveal reveal-1">
-      <div class="lbl" data-en="03 / iOS · Swift" data-tr="03 / iOS · Swift">03 / iOS · Swift</div>
-      <h2 data-en="Small <em>tools</em>,<br>made carefully." data-tr="Küçük <em>araçlar</em>,<br>özenle yapılmış.">Small <em>tools</em>,<br>made carefully.</h2>
-      <p data-en="The Swift practice lives at swift.sedatonat.dev — a clean room for SwiftUI components, Combine flows, and the slow accumulation of patterns that hold up across projects." data-tr="Swift pratiği swift.sedatonat.dev'de yaşıyor — SwiftUI bileşenleri, Combine akışları ve projeler arası dayanıklı kalıpların yavaş birikimi için temiz bir oda.">
-        The Swift practice lives at swift.sedatonat.dev — a clean room for SwiftUI components, Combine flows, and the slow accumulation of patterns that hold up across projects.
+    <div class="pillar-text reveal reveal-1">
+      <div class="lbl" data-en="01 / Books" data-tr="01 / Kitaplar">01 / Kitaplar</div>
+      <h2 data-en="A library<br>under <em>construction</em>." data-tr="İnşa halinde<br>bir <em>kütüphane.</em>">İnşa halinde<br>bir <em>kütüphane.</em></h2>
+      <p class="sub" data-en="A book, hundreds of articles, a growing glossary, and weekly reports." data-tr="Bir kitap, yüzlerce makale, büyüyen bir sözlük ve haftalık raporlar.">Bir kitap, yüzlerce makale, büyüyen bir sözlük ve haftalık raporlar.</p>
+      <p data-en="The published output. Each platform has its own clock — daily, weekly, evergreen — but they all serve the same field." data-tr="Yayınlanan iş. Her platformun kendi saati var — günlük, haftalık, kalıcı — ama hepsi aynı sahaya hizmet ediyor.">
+        Yayınlanan iş. Her platformun kendi saati var — günlük, haftalık, kalıcı — ama hepsi aynı sahaya hizmet ediyor.
       </p>
-      <a href="https://swift.sedatonat.dev" class="link-arrow" target="_blank" rel="noopener" data-en="Open the notes →" data-tr="Notları aç →">Open the notes →</a>
+      <ul class="pillar-list">
+        <li class="featured">
+          <a href="https://www.erpnasilalinir.com" target="_blank" rel="noopener">
+            <span class="name" data-en="ErpNasılAlınır.com" data-tr="ErpNasılAlınır.com">ErpNasılAlınır.com</span>
+            <span class="meta" data-en="Book · Beta" data-tr="Kitap · Beta">Kitap · Beta</span>
+            <span class="arr">↗</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tedarikzinciriportali.com" target="_blank" rel="noopener">
+            <span class="name">TedarikZinciriPortali.com</span>
+            <span class="meta" data-en="226 articles" data-tr="226 makale">226 makale</span>
+            <span class="arr">↗</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://tzp.news" target="_blank" rel="noopener">
+            <span class="name">TZP.news</span>
+            <span class="meta" data-en="Daily" data-tr="Günlük">Günlük</span>
+            <span class="arr">↗</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tedarikzinciriportali.com/sozluk" target="_blank" rel="noopener">
+            <span class="name">SupplyChainGlossary</span>
+            <span class="meta" data-en="167 terms" data-tr="167 terim">167 terim</span>
+            <span class="arr">↗</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tedarikzinciriportali.com/linkedin" target="_blank" rel="noopener">
+            <span class="name" data-en="LinkedIn newsletters" data-tr="LinkedIn bültenler">LinkedIn bültenler</span>
+            <span class="meta" data-en="Daily + Weekly" data-tr="Günlük + Haftalık">Günlük + Haftalık</span>
+            <span class="arr">↗</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="rakamlar">
+  <div class="slash-tag reveal" data-en="02 — Numbers" data-tr="02 — Rakamlar">02 — Rakamlar<span class="num">/ RAKAMLAR</span></div>
+
+  <div class="pillar right">
+    <div class="pillar-text reveal">
+      <div class="lbl" data-en="02 / Numbers" data-tr="02 / Rakamlar">02 / Rakamlar</div>
+      <h2 data-en="Decisions,<br><em>measured.</em>" data-tr="Karar için<br><em>ölçülen.</em>">Karar için<br><em>ölçülen.</em></h2>
+      <p class="sub" data-en="Power BI dashboards and supply chain analyses — built for the desk, not for the slide deck." data-tr="Power BI panoları ve tedarik zinciri analizleri — slayt için değil, masada karar için.">Power BI panoları ve tedarik zinciri analizleri — slayt için değil, masada karar için.</p>
+      <p data-en="Twenty years of operations gave the questions; Power BI gives the answers in a form a manager can act on." data-tr="Yirmi yıllık operasyon soruları üretti; Power BI cevapları yöneticinin harekete geçebileceği şekilde veriyor.">
+        Yirmi yıllık operasyon soruları üretti; Power BI cevapları yöneticinin harekete geçebileceği şekilde veriyor.
+      </p>
+      <ul class="pillar-list">
+        <li class="featured">
+          <a href="https://www.tedarikzinciriportali.com/makale/tags/power-bi-tr" target="_blank" rel="noopener">
+            <span class="name" data-en="Power BI dashboards" data-tr="Power BI panoları">Power BI panoları</span>
+            <span class="meta" data-en="Featured" data-tr="Öne çıkan">Öne çıkan</span>
+            <span class="arr">↗</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tedarikzinciriportali.com/analizler" target="_blank" rel="noopener">
+            <span class="name" data-en="Analyses" data-tr="Analizler">Analizler</span>
+            <span class="meta" data-en="27 articles" data-tr="27 makale">27 makale</span>
+            <span class="arr">↗</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tedarikzinciriportali.com/makale/categories/tedarik-zinciri-raporu" target="_blank" rel="noopener">
+            <span class="name" data-en="Weekly supply chain report" data-tr="Haftalık tedarik zinciri raporu">Haftalık tedarik zinciri raporu</span>
+            <span class="meta" data-en="21 reports" data-tr="21 rapor">21 rapor</span>
+            <span class="arr">↗</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tedarikzinciriportali.com/makale/categories/analiz-yontemleri" target="_blank" rel="noopener">
+            <span class="name" data-en="Analysis methods" data-tr="Analiz yöntemleri">Analiz yöntemleri</span>
+            <span class="meta" data-en="22 articles" data-tr="22 makale">22 makale</span>
+            <span class="arr">↗</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <figure class="pillar-visual pv-nums reveal reveal-1">
+      <div class="pv-num">02 / DATA</div>
+      <div class="pv-meta">DASHBOARD.001</div>
+      <div class="grid-lines"></div>
+      <div class="pv-nums-bars">
+        <div style="height:42%;animation-delay:.1s"></div>
+        <div style="height:68%;animation-delay:.18s"></div>
+        <div style="height:35%;animation-delay:.26s"></div>
+        <div style="height:88%;animation-delay:.34s"></div>
+        <div style="height:55%;animation-delay:.42s"></div>
+        <div style="height:78%;animation-delay:.5s"></div>
+        <div style="height:48%;animation-delay:.58s"></div>
+        <div style="height:62%;animation-delay:.66s"></div>
+        <div style="height:82%;animation-delay:.74s"></div>
+      </div>
+      <div class="pv-bottom">
+        <div class="ttl"><em>Sayı pratiği.</em></div>
+        <div class="ttl-en" data-en="Built for decisions." data-tr="Karar için inşa edilmiş.">Karar için inşa edilmiş.</div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="kodlar">
+  <div class="slash-tag reveal" data-en="03 — Codes" data-tr="03 — Kodlar">03 — Kodlar<span class="num">/ KODLAR</span></div>
+
+  <div class="pillar left">
+    <figure class="pillar-visual pv-codes reveal">
+      <div class="top">
+        <span>~/sedatonat $</span>
+        <span data-en="Snippet · 001" data-tr="Snippet · 001">Snippet · 001</span>
+      </div>
+<pre style="margin:0;font-family:inherit;font-size:inherit;line-height:inherit;color:inherit;white-space:pre;"><span class="cm">// Atelier · Built tools</span>
+
+<span class="pr">$</span> <span class="kw">whoami</span>
+<span class="out">sedat.onat</span>
+
+<span class="pr">$</span> <span class="kw">ls</span> ./atelier/
+<span class="str">tzp.news</span>          <span class="cm">// Claude Cowork · İlk</span>
+<span class="str">swift.sedatonat.dev</span>  <span class="cm">// iOS · field notes</span>
+<span class="str">_______</span>            <span class="cm">// devamı geliyor</span>
+
+<span class="pr">$</span> <span class="kw">cat</span> .principle
+<span class="out">"Yazıyor. Ölçüyor.</span>
+<span class="out"> Şimdi inşa ediyor."</span>
+</pre>
+    </figure>
+
+    <div class="pillar-text reveal reveal-1">
+      <div class="lbl" data-en="03 / Codes" data-tr="03 / Kodlar">03 / Kodlar</div>
+      <h2 data-en="Built<br>with <em>Claude.</em>" data-tr="Claude<br>ile <em>inşa.</em>">Claude<br>ile <em>inşa.</em></h2>
+      <p class="sub" data-en="The newest column. Tools and applications built side-by-side with Claude Cowork — starting with TZP.news." data-tr="En yeni sütun. Claude Cowork ile yan yana inşa edilen araç ve uygulamalar — TZP.news ile başlayarak.">En yeni sütun. Claude Cowork ile yan yana inşa edilen araç ve uygulamalar — TZP.news ile başlayarak.</p>
+      <p data-en="The writing produced the questions; the data sharpened them; now the building turns them into tools that anyone in the field can pick up. <strong>TZP.news is the first.</strong> More are in the workshop." data-tr="Yazı soruları üretti; veri onları keskinleştirdi; inşa onları sahadaki herkesin kullanabileceği araçlara dönüştürüyor. <strong>TZP.news ilki.</strong> Diğerleri atölyede.">
+        Yazı soruları üretti; veri onları keskinleştirdi; inşa onları sahadaki herkesin kullanabileceği araçlara dönüştürüyor. <strong>TZP.news ilki.</strong> Diğerleri atölyede.
+      </p>
+      <ul class="pillar-list">
+        <li class="featured">
+          <a href="https://tzp.news" target="_blank" rel="noopener">
+            <span class="name">TZP.news</span>
+            <span class="meta" data-en="Claude Cowork · #01" data-tr="Claude Cowork · #01">Claude Cowork · #01</span>
+            <span class="arr">↗</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://swift.sedatonat.dev" target="_blank" rel="noopener">
+            <span class="name">swift.sedatonat.dev</span>
+            <span class="meta" data-en="iOS · Swift" data-tr="iOS · Swift">iOS · Swift</span>
+            <span class="arr">↗</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/sedatonat" target="_blank" rel="noopener">
+            <span class="name">GitHub · @sedatonat</span>
+            <span class="meta" data-en="Source" data-tr="Kaynak">Kaynak</span>
+            <span class="arr">↗</span>
+          </a>
+        </li>
+        <li style="opacity:0.55;">
+          <a href="#contact" style="cursor:default;">
+            <span class="name" data-en="More applications coming" data-tr="Yeni uygulamalar geliyor">Yeni uygulamalar geliyor</span>
+            <span class="meta" data-en="In progress" data-tr="Yapım aşamasında">Yapım aşamasında</span>
+            <span class="arr">···</span>
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
@@ -744,42 +820,45 @@
 <div class="section-divider"></div>
 
 <section class="quote reveal">
-  <p data-en="“Designs that are bold, raw, and unapologetically timeless. Minimalism that captures attention, even in silence.”" data-tr="“Cesur, ham ve özür dilemeden zamansız tasarımlar. Sessizlikte bile dikkati yakalayan minimalizm.”">"Designs that are bold, raw, and unapologetically timeless. Minimalism that captures attention, even in silence."</p>
-  <span class="by" data-en="— Operating Principle" data-tr="— Çalışma İlkesi">— Operating Principle</span>
+  <p data-en="“Tools should outlast the trend that built them. The work here aims for that, quietly.”" data-tr="“Araçlar, kendilerini doğuran trendi aşmalıdır. Buradaki iş ona, sessizce, niyetlenir.”">"Araçlar, kendilerini doğuran trendi aşmalıdır. Buradaki iş ona, sessizce, niyetlenir."</p>
+  <span class="by" data-en="— Sedat Onat" data-tr="— Sedat Onat">— Sedat Onat</span>
 </section>
 
 <div class="section-divider"></div>
 
 <section id="contact">
-  <div class="slash-tag reveal" data-en="Stay in touch" data-tr="İletişimde kal">Stay in touch<span class="num">/ 04</span></div>
+  <div class="slash-tag reveal" data-en="04 — Stay in touch" data-tr="04 — İletişimde kal">04 — İletişimde kal<span class="num">/ ILETISIM</span></div>
 
   <div class="contact-row reveal reveal-1">
-    <h2 class="contact-headline" data-en="Subscribe to receive new <em>field notes</em> & projects." data-tr="Yeni <em>saha notları</em> ve projeler için abone ol.">Subscribe to receive new <em>field notes</em> &amp; projects.</h2>
-    <form class="contact-form" onsubmit="event.preventDefault(); window.location='mailto:info@sedatonat.com?subject=Subscribe&body=Email%3A%20'+encodeURIComponent(this.email.value);">
-      <input type="email" name="email" placeholder="enter your email address" data-en-ph="enter your email address" data-tr-ph="e-posta adresinizi girin" required>
-      <button type="submit" data-en="Send →" data-tr="Gönder →">Send →</button>
+    <h2 class="contact-headline" data-en="Subscribe to receive new <em>articles</em>, dashboards & tools." data-tr="Yeni <em>makaleler</em>, panolar ve araçlar için abone ol.">Yeni <em>makaleler</em>, panolar ve araçlar için abone ol.</h2>
+    <form class="contact-form" onsubmit="event.preventDefault(); window.location='mailto:info@sedatonat.com?subject=Subscribe&body='+encodeURIComponent(this.email.value);">
+      <input type="email" name="email" placeholder="e-posta adresinizi girin" data-en-ph="enter your email address" data-tr-ph="e-posta adresinizi girin" required>
+      <button type="submit" data-en="Send →" data-tr="Gönder →">Gönder →</button>
     </form>
   </div>
 
   <div class="contact-list reveal reveal-2">
     <div>
-      <h4 data-en="Reference" data-tr="Referans">Reference</h4>
+      <h4 data-en="Publications" data-tr="Yayınlar">Yayınlar</h4>
       <ul>
         <li><a href="https://www.sedatonat.com" target="_blank" rel="noopener"><span>SedatOnat.com</span><span class="arr">↗</span></a></li>
         <li><a href="https://www.tedarikzinciriportali.com" target="_blank" rel="noopener"><span>TedarikZinciriPortali</span><span class="arr">↗</span></a></li>
         <li><a href="https://tzp.news" target="_blank" rel="noopener"><span>TZP.news</span><span class="arr">↗</span></a></li>
+        <li><a href="https://www.erpnasilalinir.com" target="_blank" rel="noopener"><span>ErpNasılAlınır</span><span class="arr">↗</span></a></li>
+        <li><a href="https://www.sedatonat.photography" target="_blank" rel="noopener"><span>Photography</span><span class="arr">↗</span></a></li>
       </ul>
     </div>
     <div>
-      <h4 data-en="Connect" data-tr="Bağlantı">Connect</h4>
+      <h4 data-en="Connect" data-tr="Bağlantı">Bağlantı</h4>
       <ul>
         <li><a href="https://github.com/sedatonat" target="_blank" rel="noopener"><span>GitHub</span><span class="arr">↗</span></a></li>
-        <li><a href="https://twitter.com/sedatonat" target="_blank" rel="noopener"><span>X / Twitter</span><span class="arr">↗</span></a></li>
         <li><a href="https://www.linkedin.com/in/sedatonat/" target="_blank" rel="noopener"><span>LinkedIn</span><span class="arr">↗</span></a></li>
+        <li><a href="https://twitter.com/sedatonat" target="_blank" rel="noopener"><span>X / Twitter</span><span class="arr">↗</span></a></li>
+        <li><a href="https://www.instagram.com/sedatonat/" target="_blank" rel="noopener"><span>Instagram</span><span class="arr">↗</span></a></li>
       </ul>
     </div>
     <div>
-      <h4 data-en="Direct" data-tr="Doğrudan">Direct</h4>
+      <h4 data-en="Direct" data-tr="Doğrudan">Doğrudan</h4>
       <ul>
         <li><a href="mailto:info@sedatonat.com"><span>info@sedatonat.com</span><span class="arr">→</span></a></li>
         <li><a href="https://swift.sedatonat.dev" target="_blank" rel="noopener"><span>swift.sedatonat.dev</span><span class="arr">↗</span></a></li>
@@ -792,40 +871,41 @@
   <div class="foot-grid">
     <div class="foot-brand">
       <div class="mark">SEDAT ONAT</div>
-      <p data-en="Supply chain, code, and field notes. Patient systems, quietly built. Based in Türkiye." data-tr="Tedarik zinciri, kod ve saha notları. Sabırlı sistemler, sessizce inşa edilir. Türkiye merkezli.">Supply chain, code, and field notes. Patient systems, quietly built. Based in Türkiye.</p>
+      <p data-en="Purchasing manager, writer, and builder. The atelier of words, numbers, and codes — alongside two decades in supply chain. Türkiye." data-tr="Satınalma yöneticisi, yazar ve yapıcı. Sözcük, sayı ve kod atölyesi — tedarik zincirinde yirmi yılın yanında. Türkiye.">Satınalma yöneticisi, yazar ve yapıcı. Sözcük, sayı ve kod atölyesi — tedarik zincirinde yirmi yılın yanında. Türkiye.</p>
     </div>
     <div class="foot-col">
-      <h5 data-en="Site" data-tr="Site">Site</h5>
-      <a href="#top" data-en="Top" data-tr="Başa">Top</a>
-      <a href="#about" data-en="About" data-tr="Hakkında">About</a>
-      <a href="#work" data-en="Field work" data-tr="Saha çalışmaları">Field work</a>
-      <a href="#notes" data-en="Notes" data-tr="Notlar">Notes</a>
-      <a href="#contact" data-en="Contact" data-tr="İletişim">Contact</a>
+      <h5 data-en="Atelier" data-tr="Atölye">Atölye</h5>
+      <a href="#top" data-en="Top" data-tr="Başa">Başa</a>
+      <a href="#about" data-en="About" data-tr="Hakkında">Hakkında</a>
+      <a href="#kitaplar" data-en="Books" data-tr="Kitaplar">Kitaplar</a>
+      <a href="#rakamlar" data-en="Numbers" data-tr="Rakamlar">Rakamlar</a>
+      <a href="#kodlar" data-en="Codes" data-tr="Kodlar">Kodlar</a>
+      <a href="#contact" data-en="Contact" data-tr="İletişim">İletişim</a>
     </div>
     <div class="foot-col">
-      <h5 data-en="Reference" data-tr="Referans">Reference</h5>
+      <h5 data-en="Publications" data-tr="Yayınlar">Yayınlar</h5>
       <a href="https://www.sedatonat.com" target="_blank" rel="noopener">SedatOnat.com</a>
       <a href="https://www.tedarikzinciriportali.com" target="_blank" rel="noopener">TedarikZinciriPortali</a>
       <a href="https://tzp.news" target="_blank" rel="noopener">TZP.news</a>
+      <a href="https://www.erpnasilalinir.com" target="_blank" rel="noopener">ErpNasılAlınır</a>
     </div>
     <div class="foot-col">
-      <h5 data-en="Connect" data-tr="Bağlantı">Connect</h5>
+      <h5 data-en="Connect" data-tr="Bağlantı">Bağlantı</h5>
       <a href="https://github.com/sedatonat" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://twitter.com/sedatonat" target="_blank" rel="noopener">X / Twitter</a>
       <a href="https://www.linkedin.com/in/sedatonat/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://twitter.com/sedatonat" target="_blank" rel="noopener">X / Twitter</a>
       <a href="mailto:info@sedatonat.com">info@sedatonat.com</a>
     </div>
   </div>
   <div class="foot-meta">
-    <div data-en="© <span id='year'>2026</span> Sedat Onat · All rights reserved" data-tr="© <span id='year'>2026</span> Sedat Onat · Tüm hakları saklıdır">© <span id="year">2026</span> Sedat Onat · All rights reserved</div>
-    <div data-en="Static · No tracking · GitHub Pages" data-tr="Statik · İzleme yok · GitHub Pages">Static · No tracking · GitHub Pages</div>
+    <div data-en="© <span id='year'>2026</span> Sedat Onat · All rights reserved" data-tr="© <span id='year'>2026</span> Sedat Onat · Tüm hakları saklıdır">© <span id="year">2026</span> Sedat Onat · Tüm hakları saklıdır</div>
+    <div data-en="Static · No tracking · GitHub Pages" data-tr="Statik · İzleme yok · GitHub Pages">Statik · İzleme yok · GitHub Pages</div>
   </div>
 </footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Language toggle
   const langBtns = document.querySelectorAll('.lang-toggle button');
   function setLang(lang) {
     document.documentElement.lang = lang;
@@ -844,16 +924,14 @@
   try {
     const saved = localStorage.getItem('sodev_lang');
     if (saved === 'tr' || saved === 'en') setLang(saved);
-    else if ((navigator.language || '').toLowerCase().startsWith('tr')) setLang('tr');
+    else if (!(navigator.language || '').toLowerCase().startsWith('tr')) setLang('en');
   } catch(e) {}
 
-  // Reveal on scroll
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
   }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // Nav scroll background
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 80);
