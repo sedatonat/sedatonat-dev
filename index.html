@@ -237,6 +237,20 @@
   .projects-foot a { color: var(--fg-3); transition: color .2s; }
   .projects-foot a:hover { color: var(--fg); }
 
+  /* TOAST */
+  .toast {
+    position: fixed; top: 28px; left: 50%; transform: translate(-50%, -8px);
+    background: var(--fg); color: var(--bg);
+    padding: 12px 22px; border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 0.08em;
+    opacity: 0; transition: opacity .25s ease, transform .25s ease;
+    pointer-events: none; z-index: 100;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    white-space: nowrap;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
   /* RESPONSIVE */
   @media (max-width: 900px) {
     .nav { padding: 22px 28px; }
@@ -275,7 +289,7 @@
       <a href="https://github.com/sedatonat" target="_blank" rel="noopener" aria-label="GitHub">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55 0-.27-.01-.99-.02-1.94-3.2.69-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.94 10.94 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.37-5.25 5.65.41.36.78 1.06.78 2.13 0 1.54-.01 2.78-.01 3.16 0 .31.21.67.8.55C20.71 21.39 24 17.08 24 12c0-6.35-5.15-11.5-12-11.5z"/></svg>
       </a>
-      <a href="mailto:info@sedatonat.com" aria-label="Contact">
+      <a href="mailto:info@sedatonat.com" id="contact-link" aria-label="Contact">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
       </a>
     </div>
@@ -383,6 +397,36 @@
       });
     }
   } catch(e) {}
+
+  // Contact: copy email + show toast (so it works even if mailto: handler isn't set)
+  (function() {
+    const link = document.getElementById('contact-link');
+    if (!link) return;
+    const email = 'info@sedatonat.com';
+    let toastEl = null;
+    let toastTimer = null;
+    function showToast(msg) {
+      if (!toastEl) {
+        toastEl = document.createElement('div');
+        toastEl.className = 'toast';
+        document.body.appendChild(toastEl);
+      }
+      toastEl.textContent = msg;
+      requestAnimationFrame(() => toastEl.classList.add('show'));
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2400);
+    }
+    link.addEventListener('click', async function(e) {
+      const isEn = document.documentElement.lang === 'en';
+      let copied = false;
+      try {
+        await navigator.clipboard.writeText(email);
+        copied = true;
+      } catch(err) {}
+      showToast(copied ? `${email}  ·  ${isEn ? 'copied' : 'kopyalandı'}` : email);
+      // Let the mailto: try in parallel — if no handler, nothing happens
+    });
+  })();
 </script>
 </body>
 </html>
