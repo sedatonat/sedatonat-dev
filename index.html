@@ -101,12 +101,23 @@
     padding: 32px 56px;
   }
   .nav .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.34em;
     font-family: 'Bruno Ace SC', sans-serif;
     font-size: 32px;
     letter-spacing: 0.16em;
     color: var(--fg);
     font-weight: 400;
     text-shadow: 0 0 1px var(--fg);
+  }
+  .nav .brand-mark {
+    width: 0.72em;
+    height: 0.72em;
+    flex: none;
+    fill: currentColor;
+    /* nudge: the wordmark's letter-spacing pushes the optical centre right */
+    margin-bottom: 0.02em;
   }
   .nav .right {
     display: flex; gap: 14px; align-items: center;
@@ -382,7 +393,7 @@
   <div class="bg-grain"></div>
 
   <nav class="nav fade fade-1">
-    <a href="/" class="brand">SEDAT ONAT</a>
+    <a href="/" class="brand"><svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true"><polygon points="29,11 71,11 50,47"/><polygon points="74,12 94,49 53,49"/><polygon points="94,51 74,88 53,51"/><polygon points="71,89 29,89 50,53"/><polygon points="26,88 6,51 47,51"/><polygon points="6,49 26,12 47,49"/></svg>SEDAT ONAT</a>
     <div class="right">
       <button type="button" class="lang" id="lang-toggle" aria-label="Switch language">TR</button>
       <a class="icon" href="https://github.com/sedatonat" target="_blank" rel="noopener" aria-label="GitHub">

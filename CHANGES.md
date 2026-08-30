@@ -171,3 +171,15 @@ kimlik bağlantısı olduğu için LinkedIn / sedatonat.com / photography orada 
 - "featured" vurgusu kaldırıldı: ilk iki satırdaki daha parlak/kalın isim biçimi
   artık yok, on satırın tamamı aynı ağırlık ve renkte. Kullanılmayan
   `.projects .featured .name-l` CSS kuralı da silindi.
+
+## Logo — nav kilidi (Alternatif A)
+
+Altıgen marka, sol üstte "SEDAT ONAT" yazısının soluna amblem olarak eklendi.
+
+- SVG doğrudan `index.html` içine gömüldü (ek ağ isteği yok, ~330 bayt).
+- Boyut `em` cinsinden verildi (`0.72em`), yani marka yazısıyla birlikte ölçekleniyor:
+  masaüstünde 23px, ≤900px'de 17px, ≤480px'de 14px. Ekstra medya sorgusu gerekmedi.
+- `fill: currentColor` — logo, marka yazısının rengini miras alıyor; ileride
+  renk değişirse tek yerden değişir.
+- `aria-hidden="true"` — bağlantının metni zaten "SEDAT ONAT", ekran okuyucuya
+  ikinci bir işaret okutmaya gerek yok.
