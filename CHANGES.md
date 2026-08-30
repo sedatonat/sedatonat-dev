@@ -183,3 +183,23 @@ Altıgen marka, sol üstte "SEDAT ONAT" yazısının soluna amblem olarak eklend
   renk değişirse tek yerden değişir.
 - `aria-hidden="true"` — bağlantının metni zaten "SEDAT ONAT", ekran okuyucuya
   ikinci bir işaret okutmaya gerek yok.
+
+## Logo — gerçek marka uygulandı
+
+Geçici altıgen işaret kaldırıldı; yerine gerçek fırça darbeli "S" enso logosu geldi.
+
+- Kaynak: `sedatonat.finance/logo.png` (1133×1157 raster). Vektör sürümü olmadığı için
+  potrace ile izlendi ve SVGO ile sadeleştirildi → tek bir SVG, ~5.9 KB, iki path.
+  İzleme 800px genişlikte yapıldı; fırça dokusu korunuyor, düğüm sayısı makul kalıyor.
+- **Nav** — `index.html` içine gömülü SVG, `fill: currentColor`. Boyut 1.06em
+  (masaüstünde ~34px). Altıgen dolu bir formdu, bu ise ince konturlu bir daire;
+  aynı görsel ağırlığı vermesi için 0.72em'den 1.06em'e çıkarıldı, yazıyla arasındaki
+  boşluk 0.34em'den 0.30em'e indirildi.
+- **favicon.svg** — aynı path, kare viewBox (`-8.5 0 817 817`), açık/koyu tema dolgusu.
+  16px'te zayıf ama okunur; 32px ve üstünde net.
+- **apple-touch-icon.png** — 180×180, beyaz marka, `#0a0a0c` zemin, %9 kenar boşluğu.
+- **og.png** — marka sağ üst köşeye yerleştirildi; sol üstteki "SEDAT ONAT" yazısıyla
+  dengeleniyor. Paylaşım önizlemesinde artık logo da görünüyor.
+
+Not: Elde yapılmış temiz bir vektör (AI/SVG) varsa onu koymak daha iyi olur —
+izleme, fırça kenarlarını yaklaşık olarak yeniden çiziyor.
