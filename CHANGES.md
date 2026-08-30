@@ -126,3 +126,41 @@ Headless Chromium ile kontrol edildi:
   ile önbelleği tazele.
 - Analitik hâlâ yok — dokuz mülke dağıtım yapan bir sayfada hangi linkin
   çalıştığını ölçmek isteyebilirsin.
+
+## Revizyon — Projeler listesi (yazılım/site odaklı)
+
+Liste, yalnızca yazılım ve web projelerini içerecek şekilde yeniden düzenlendi.
+
+**Çıkarılanlar** (yazılım projesi olmadığı için):
+- ErpNasılAlınır.com — kitap (Google Play)
+- SedatOnat.com — profil sayfası
+- SedatOnat.photography — fotoğraf portfolyosu
+- LinkedIn — bülten
+
+**Eklenenler:**
+- TradeArtery.com — küresel ticaret haritası
+- TZP.academy — öğrenme platformu
+- SedatOnat.finance — piyasa çalışma alanı
+
+**Yeni sıralama (dev kimliği önce):**
+01 TZP.news · 02 TZP.academy · 03 TradeArtery.com · 04 swift.sedatonat.dev ·
+05 TedarikZinciriPortali.com · 06 SupplyChainGlossary · 07 SedatOnat.finance · 08 GitHub
+
+Not: SupplyChainGlossary hâlâ tedarikzinciriportali.com/sozluk adresine bağlı —
+supplychainglossary.com.tr denendi, bağlantı kurulamadı (henüz yayında değil).
+
+JSON-LD `sameAs` listesine tzp.academy, tradeartery.com ve sedatonat.finance eklendi;
+kimlik bağlantısı olduğu için LinkedIn / sedatonat.com / photography orada bırakıldı.
+
+## Revizyon — iOS uygulaması eklendi
+
+- **Albumize** (App Store) listeye 01 sırasına, öne çıkan satır olarak eklendi.
+  Bağlantı ülke bağımsız biçimde verildi: `apps.apple.com/app/albumize/id6762205813`
+  (ziyaretçi kendi App Store mağazasına yönlenir).
+- JSON-LD `sameAs` listesine aynı bağlantı eklendi.
+- **TZP News (iOS)** 02 sırasına, öne çıkan satır olarak eklendi:
+  `apps.apple.com/app/tzp-news/id6767178018`. Web sürümünden ayrışsın diye
+  satır adı "TZP News · iOS", web satırı ise "TZP.news" olarak bırakıldı.
+- Güncel sıra: 01 Albumize · 02 TZP News · iOS · 03 TZP.news · 04 TZP.academy ·
+  05 TradeArtery.com · 06 swift.sedatonat.dev · 07 TedarikZinciriPortali.com ·
+  08 SupplyChainGlossary · 09 SedatOnat.finance · 10 GitHub
