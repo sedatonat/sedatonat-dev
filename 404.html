@@ -4,54 +4,90 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>404 — Sedat Onat</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="description" content="This page does not exist on sedatonat.dev.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0a0a0c">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet"></noscript>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0a0a0c;
+    --fg: #f0f0f0;
+    --fg-3: #8a8a8a;
+    --line: rgba(255,255,255,0.18);
+    --accent: #c97b3f;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: 'Inter', sans-serif;
-    background: #0a0a0a;
-    color: #fff;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300;
+    background: var(--bg);
+    color: var(--fg);
     min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 20px;
+    -webkit-font-smoothing: antialiased;
   }
+  ::selection { background: var(--fg); color: var(--bg); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   h1 {
     font-size: clamp(96px, 20vw, 220px);
-    font-weight: 200;
+    font-weight: 700;
     letter-spacing: -0.05em;
     line-height: 1;
     margin-bottom: 24px;
   }
   p {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    color: #888;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 40px;
-  }
-  a {
-    font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
-    color: #fff;
-    text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 14px 24px;
-    letter-spacing: 0.08em;
-    transition: all .2s;
+    color: var(--fg-3);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 44px;
   }
-  a:hover { background: #fff; color: #000; }
-  ::selection { background: #fff; color: #000; }
+  p::before { content: "// "; }
+  a {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--fg);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 16px 34px;
+    transition: background .35s ease, color .35s ease, border-color .35s ease;
+  }
+  a:hover { background: var(--fg); color: #000; border-color: var(--fg); }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition-duration: .001ms !important; }
+  }
 </style>
 </head>
 <body>
-  <div>
+  <main>
     <h1>404</h1>
-    <p>// page not found</p>
-    <a href="/">← Back to home</a>
-  </div>
+    <p data-en="Page not found" data-tr="Sayfa bulunamadı">Page not found</p>
+    <a href="/"><span aria-hidden="true">←</span><span data-en="Back to home" data-tr="Ana sayfaya dön">Back to home</span></a>
+  </main>
+<script>
+(function () {
+  var lang = null;
+  try { lang = localStorage.getItem('so-lang'); } catch (e) {}
+  if (!lang) lang = (navigator.language || '').toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en';
+  if (lang !== 'tr') return;
+  document.documentElement.lang = 'tr';
+  var nodes = document.querySelectorAll('[data-tr]');
+  for (var i = 0; i < nodes.length; i++) nodes[i].innerHTML = nodes[i].getAttribute('data-tr');
+})();
+</script>
 </body>
 </html>
