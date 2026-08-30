@@ -164,3 +164,10 @@ kimlik bağlantısı olduğu için LinkedIn / sedatonat.com / photography orada 
 - Güncel sıra: 01 Albumize · 02 TZP News · iOS · 03 TZP.news · 04 TZP.academy ·
   05 TradeArtery.com · 06 swift.sedatonat.dev · 07 TedarikZinciriPortali.com ·
   08 SupplyChainGlossary · 09 SedatOnat.finance · 10 GitHub
+
+## Revizyon — satır biçimi tekleştirildi
+
+- Albumize satırının adı "Albumize · iOS" oldu; TZP News satırıyla aynı kalıba girdi.
+- "featured" vurgusu kaldırıldı: ilk iki satırdaki daha parlak/kalın isim biçimi
+  artık yok, on satırın tamamı aynı ağırlık ve renkte. Kullanılmayan
+  `.projects .featured .name-l` CSS kuralı da silindi.
