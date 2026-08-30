@@ -203,3 +203,15 @@ Geçici altıgen işaret kaldırıldı; yerine gerçek fırça darbeli "S" enso 
 
 Not: Elde yapılmış temiz bir vektör (AI/SVG) varsa onu koymak daha iyi olur —
 izleme, fırça kenarlarını yaklaşık olarak yeniden çiziyor.
+
+## swift.sedatonat.dev listeden çıkarıldı
+
+Adres canlı ama içerik yok: sayfa, kurulmamış bir dokümantasyon şablonu —
+"Welcome to" başlığı tamamlanmamış, metinler "bu alanı nasıl kullanırsınız"
+tipinde jenerik yönergeler. Gerçek Swift/iOS notu yok.
+
+Portfolyodan boş bir şablona link vermek, o satırı hiç koymamaktan kötü;
+üstelik iOS tarafını zaten 01 ve 02'deki iki gerçek uygulama temsil ediyor.
+Satır listeden ve JSON-LD `sameAs` dizisinden kaldırıldı. Liste 10'dan 9'a indi.
+
+Sayfa içerikle doldurulursa geri eklenebilir.
